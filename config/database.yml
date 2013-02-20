@@ -30,6 +30,6 @@ production:
   encoding: unicode
   database: rentals_production
   pool: 5
-  username: 
-  password:
+  username: rentals
+  password: H73OxmchKFqgJba13FnS
   timeout: 5000
