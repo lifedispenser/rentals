@@ -71,7 +71,7 @@ after "assetsRazzrecompile", "deploy:fix_permissions"
 after "deploy:restart", "deploy:cleanup"
  
 # Unicorn config
-set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 set :su_rails, "sudo -u #{user_rails}"
