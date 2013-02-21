@@ -1,6 +1,0 @@
-%h1 Rentals
-
-#rentals
-  {{#each rentals}}
-    %h2 {{name}}
-    %p {{description}}
