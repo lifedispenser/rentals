@@ -1,0 +1,6 @@
+.row
+  %h2
+    =hb 'name'
+
+  %p
+    =hb 'description'

@@ -6,6 +6,7 @@ gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_fi
 
 gem 'pg'
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -16,10 +17,15 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
 
+  gem 'bootstrap-sass'
+  
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml'
 gem 'jquery-rails'
+gem 'ember-rails'
+gem 'hamlbars', '~> 2.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -34,8 +40,19 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano', group: :development
-gem 'rvm-capistrano', group: :development
+group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+end
 
 # To use debugger
 # gem 'debugger'
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'minitest-rails'
+  gem 'minitest-rails-shoulda'
+  gem 'minitest-matchers'
+  gem 'minitest-rg'
+end

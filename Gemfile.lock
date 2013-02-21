@@ -82,7 +82,15 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    active_model_serializers (0.6.0)
+      activemodel (>= 3.0)
     atomic (1.0.1)
+    barber (0.3.0)
+      execjs
+    bootstrap-sass (2.3.0.0)
+      sass (~> 3.2)
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.1.4)
     capistrano (2.14.2)
       highline
@@ -94,9 +102,28 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    ember-rails (0.10.0)
+      active_model_serializers
+      barber
+      execjs (>= 1.2)
+      railties (>= 3.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
+    haml (4.0.0)
+      tilt
+    hamlbars (2.0.0)
+      execjs (>= 1.2)
+      haml
+      sprockets
+      tilt
     highline (1.6.15)
     hike (1.2.1)
     i18n (0.6.1)
@@ -112,8 +139,21 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.21)
     minitest (4.6.1)
+    minitest-matchers (1.2.0)
+      minitest (>= 2.5.0)
+    minitest-rails (0.5.1)
+      minitest (~> 4.0)
+      rails (>= 3.0)
+    minitest-rails-shoulda (0.4.1)
+      minitest-matchers (~> 1.2.0)
+      minitest-rails (~> 0.5.0)
+      shoulda-matchers (~> 1.4.1)
+    minitest-rg (1.1.0)
+    mocha (0.10.5)
+      metaclass (~> 0.0.1)
     multi_json (1.6.1)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
@@ -135,6 +175,9 @@ GEM
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.5)
+    shoulda-matchers (1.4.2)
+      activesupport (>= 3.0.0)
+      bourne (~> 1.1.2)
     sprockets (2.8.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -167,10 +210,20 @@ PLATFORMS
 DEPENDENCIES
   activerecord-deprecated_finders!
   arel!
+  bootstrap-sass
   capistrano
   coffee-rails!
+  ember-rails
+  factory_girl_rails
+  faker
+  haml
+  hamlbars (~> 2.0)
   jbuilder (~> 1.0.1)
   jquery-rails
+  minitest-matchers
+  minitest-rails
+  minitest-rails-shoulda
+  minitest-rg
   pg
   rails!
   rvm-capistrano
