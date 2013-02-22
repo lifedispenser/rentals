@@ -14,15 +14,14 @@ set :application, "rentals"
 set :rails_env, :production
  
 # Deploy username and sudo username
-set :user, "ec2-user"
+set :user, "rentals"
 set :user_rails, "rails"
  
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-ssh_options[:keys] = ["#{ENV['HOME']}/Users/bmcquay/.ec2/rentals-production.pem"] 
 
 # App Domain
-set :domain, "ec2-23-22-126-136.compute-1.amazonaws.com"
+set :domain, "surfinglangosta.com"
  
 # We don't want to use sudo (root) - for security reasons
 set :use_sudo, false
