@@ -6,6 +6,26 @@ GIT
       tilt
 
 GIT
+  remote: git://github.com/onomojo/rails_admin.git
+  revision: fdada9396b3bcfbbdedee27daefe54827a089501
+  specs:
+    rails_admin (0.4.5)
+      bootstrap-sass (~> 2.2)
+      builder (~> 3.0)
+      coffee-rails (>= 3.1)
+      font-awesome-sass-rails (~> 3.0, >= 3.0.0.1)
+      haml (~> 4.0)
+      jquery-rails (~> 2.1)
+      jquery-ui-rails (~> 3.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.6)
+      rails (>= 3.1)
+      remotipart (~> 1.0)
+      safe_yaml (~> 0.6)
+      sass-rails (>= 3.1)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: d29b744d92a380e61d0c62149cc60e91ec4ba0f2
   branch: rails4
@@ -32,7 +52,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: b49a2a779ba6deba108d1f842ab5b7bc7460aa14
+  revision: 99775fd1612217aaba2f3580b4204c6b75c04249
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -90,25 +110,6 @@ GIT
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-
-PATH
-  remote: ~/Work/rails_admin
-  specs:
-    rails_admin (0.4.5)
-      bootstrap-sass (~> 2.2)
-      builder (~> 3.0)
-      coffee-rails (>= 3.1)
-      font-awesome-sass-rails (~> 3.0, >= 3.0.0.1)
-      haml (~> 4.0)
-      jquery-rails (~> 2.1)
-      jquery-ui-rails (~> 3.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (~> 0.6)
-      rails (>= 3.1)
-      remotipart (~> 1.0)
-      safe_yaml (~> 0.6)
-      sass-rails (>= 3.1)
 
 GEM
   remote: https://rubygems.org/
