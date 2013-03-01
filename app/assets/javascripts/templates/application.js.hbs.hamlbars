@@ -1,9 +1,0 @@
-%h1 {{title}}
-
-%p
-  Your content here.
-
-=hb :outlet
-
-%p
-  Footer

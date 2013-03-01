@@ -1,8 +1,0 @@
-%h1 Rentals
-
-#rentals
-  =hb 'each rentals' do
-    %h2
-      {{name}}
-    %p
-      {{description}}

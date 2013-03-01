@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
+#source 'http://production.cf.rubygems.org'
 
 gem 'rails',     github: 'rails/rails'
 gem 'arel',      github: 'rails/arel'
-gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
+#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 
 gem 'pg'
-
+gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'rails_admin', github: 'onomojo/rails_admin'
+#gem 'rails_admin', :path => '~/Work/rails_admin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,8 +27,6 @@ end
 
 gem 'haml'
 gem 'jquery-rails'
-gem 'ember-rails'
-gem 'hamlbars', '~> 2.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
