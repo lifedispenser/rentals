@@ -37,8 +37,6 @@ gem 'jbuilder', '~> 1.0.1'
 
 # Use unicorn as the app server
 gem 'unicorn'
-#gem 'rails_admin', :path => '~/Work/rails_admin'
-gem 'rails_admin', github: 'onomojo/rails_admin'
 
 # Deploy with Capistrano
 group :development do

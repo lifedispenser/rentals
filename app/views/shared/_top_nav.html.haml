@@ -1,0 +1,24 @@
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse
+      .navbar-inner
+        %button.btn.btn-navbar{type: 'button', 'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        =link_to 'Surfing Langosta', '#', class: 'brand'
+
+        .nav-collapse.collapse
+          %ul.nav
+            %li.active
+              =link_to 'Home', '#'
+            %li
+              =link_to 'Tamarindo', '#'
+            %li
+              =link_to 'Pet Friendly', '#'
+            %li
+              =link_to 'Long Term', '#'
+            %li
+              =link_to 'About', '#'
+            %li
+              =link_to 'Contact', '#'
