@@ -48,4 +48,8 @@ Rentals::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get 'mr_rogers' => 'mr_rogers/dashboard#index'
+  
+  namespace :mr_rogers do
+  end
 end
