@@ -51,5 +51,6 @@ Rentals::Application.routes.draw do
   get 'mr_rogers' => 'mr_rogers/dashboard#index'
   
   namespace :mr_rogers do
+    resources :rentals
   end
 end

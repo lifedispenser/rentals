@@ -1,0 +1,12 @@
+=form_for [:mr_rogers, @rental], class: 'form-horizontal' do |f|
+  .control-group
+    %label.control-label{for: 'rental_name'} Name
+    .controls
+      =f.text_field :name, placeholder: 'Name', class: 'input-block-level'
+
+  .control-group
+    %label.control-label{for: 'rental_description'} Description
+    .controls
+      =f.text_area :description, placeholder: 'Description', class: 'input-block-level', rows: 5
+    
+    %button.btn{type: 'submit'} Save
