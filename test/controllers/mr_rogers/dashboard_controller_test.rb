@@ -11,6 +11,12 @@ describe MrRogers::DashboardController do
     end
     
     context "with authentication" do
+      it "should show the dashboard" do
+        @user = FactoryGirl.create :user
+        sign_in @user
+        get :index
+        assert_response :success
+      end
     end
   end
 end
