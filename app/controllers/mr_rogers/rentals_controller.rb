@@ -15,9 +15,7 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
   def create
     @rental = Rental.create(post_params)
     flashy
-    respond_to do |format|
-      format.html { @rental.errors.empty? ? (redirect_to action: :index) : (render :new) }
-    end
+    @rental.errors.empty? ? (redirect_to action: :index) : (render :new)
   end
 
   def edit
@@ -29,6 +27,12 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
     @rental.update_attributes(post_params)
     flashy
     render :edit
+  end
+  
+  def destroy
+    Rental.find(params[:id]).destroy
+    flash[:success] = 'The rental has been deleted'
+    redirect_to action: :index
   end
 
   private
