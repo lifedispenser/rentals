@@ -23,6 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'haml', github: 'haml/haml'
 gem 'jquery-rails'
 gem 'jquery-datatables-rails'

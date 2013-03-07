@@ -6,6 +6,7 @@ $ ->
       bProcessing: true
       bServerSide: true
       sAjaxSource: $('.table').data('source')
+      aoColumns: [{ "sWidth": "5%" }, null, null]
     })
 
   $(document).ready(load_datatable)

@@ -60,33 +60,103 @@ describe MrRogers::RentalsController do
         assert_equal Rental.count, 0
       end
 
-      it "should raise a parameter missing exception" do
+      it "should not create a rental and respond with a failure message" do
         post :create, rental: { name: 'Test Name' }
         assert_response :success
-        assert flash[:error]
-        assert_equal Rental.count, 0
-      end
-
-      it "should raise a parameter missing exception" do
-        post :create, rental: { description: 'Wonderful world' }
-        assert_response :success
-        assert flash[:error]
+        assert !flash[:error].empty?
         assert_equal Rental.count, 0
       end
 
       it "should not create a rental and respond with a failure message" do
-        post :create, rental: { name: '', description: '' }
+        post :create, rental: { description: 'Wonderful world' }
         assert_response :success
-        assert flash[:error]
+        assert !flash[:error].empty?
+        assert_equal Rental.count, 0
+      end
+
+      it "should not create a rental and respond with a failure message" do
+        post :create, rental: { contact: 'Someone Special' }
+        assert_response :success
+        assert !flash[:error].empty?
+        assert_equal Rental.count, 0
+      end
+
+      it "should not create a rental and respond with a failure message" do
+        post :create, rental: { name: '', description: '', contact: '' }
+        assert_response :success
+        assert !flash[:error].empty?
         assert_equal Rental.count, 0
       end
 
       it "should not create a rental and respond with a failure message" do
         post :create, rental: { name: 'Test Name', description: 'Wonderful world' }
-        assert_redirected_to mr_rogers_rentals_path
-        assert flash[:success]
-        assert_equal Rental.count, 1
+        assert_response :success
+        assert !flash[:error].empty?
+        assert_equal Rental.count, 0
       end
+
+      it "should create a rental and redirect to rentals index" do
+        name = 'Test Name'
+        description = 'Wonderful world'
+        contact = 'Someone Special'
+        post :create, rental: { name: name, description: description, contact: contact }
+        
+        assert_redirected_to mr_rogers_rentals_path
+        assert !flash[:success].empty?
+        assert_equal Rental.count, 1
+        rental = Rental.all.first
+        assert_equal rental.name, name
+        assert_equal rental.description, description
+        assert_equal rental.contact, contact
+      end
+
+      it "should create a rental and redirect to rentals index" do
+        name = 'Test Name'
+        description = 'Wonderful world'
+        contact = 'Someone Special'
+        beds = '3.0'
+        baths = '1.5'
+        rpn = '100'
+        rpw = '500'
+        rpm = '2000'
+        brpn = '50'
+        brpw = '100'
+        brpm = '200'
+        post :create, rental: { name: name,
+                                description: description,
+                                contact: contact,
+                                bedrooms: beds,
+                                bathrooms: baths,
+                                pet_friendly: 'true',
+                                kid_friendly: 'true',
+                                rate_per_night: rpn,
+                                rate_per_week: rpw,
+                                rate_per_month: rpm,
+                                base_rate_per_night: brpn,
+                                base_rate_per_week: brpw,
+                                base_rate_per_month: brpm
+                                 }
+        
+        assert_redirected_to mr_rogers_rentals_path
+        assert !flash[:success].empty?
+        assert_equal Rental.count, 1
+        rental = Rental.all.first
+        
+        assert_equal rental.name, name
+        assert_equal rental.description, description
+        assert_equal rental.contact, contact
+        assert_equal rental.pet_friendly, true
+        assert_equal rental.kid_friendly, true
+        assert_equal rental.bedrooms.to_s, beds
+        assert_equal rental.bathrooms.to_s, baths
+        assert_equal rental.rate_per_night.to_s, rpn
+        assert_equal rental.rate_per_week.to_s, rpw
+        assert_equal rental.rate_per_month.to_s, rpm
+        assert_equal rental.base_rate_per_night.to_s, brpn
+        assert_equal rental.base_rate_per_week.to_s, brpw
+        assert_equal rental.base_rate_per_month.to_s, brpm
+      end
+
     end
   end
   
@@ -152,42 +222,64 @@ describe MrRogers::RentalsController do
         assert_equal @rental, assigns(:rental)
       end
 
+      it "should not update the contact because of failed validations" do
+        patch :update, id: @rental.id, rental: { contact: '' }
+
+        assert_response :success
+        assert !flash[:error].empty?
+        assert_equal @rental, assigns(:rental)
+      end
+
       it "should succeed but not change anything" do
         lambda { patch :update, id: @rental.id }.must_raise ActionController::ParameterMissing
       end
 
-      it "should update the rental name" do
-        new_name = 'Test Name'
-        patch :update, id: @rental.id, rental: { name: new_name }
-        rental = Rental.find(@rental.id)
+      it "should update the rental information" do
+        name = 'Test Name'
+        description = 'Wonderful world'
+        contact = 'Someone Special'
+        beds = '3.0'
+        baths = '1.5'
+        rpn = '100'
+        rpw = '500'
+        rpm = '2000'
+        brpn = '50'
+        brpw = '100'
+        brpm = '200'
+        patch :update, id: @rental.id, rental: {
+                                                  name: name,
+                                                  description: description,
+                                                  contact: contact,
+                                                  bedrooms: beds,
+                                                  bathrooms: baths,
+                                                  pet_friendly: 'true',
+                                                  kid_friendly: 'true',
+                                                  rate_per_night: rpn,
+                                                  rate_per_week: rpw,
+                                                  rate_per_month: rpm,
+                                                  base_rate_per_night: brpn,
+                                                  base_rate_per_week: brpw,
+                                                  base_rate_per_month: brpm
+                                                   }
         
-        assert_response :success
-        assert !flash[:success].empty?
-        assert_equal rental.name, new_name
-        assert_equal rental.description, @rental.description
-      end
-
-      it "should update the rental description" do
-        new_description = 'Wonderful world'
-        patch :update, id: @rental.id, rental: { description: new_description }
-        rental = Rental.find(@rental.id)
-
-        assert_response :success
-        assert !flash[:success].empty?
-        assert_equal rental.description, new_description
-        assert_equal rental.name, @rental.name
-      end
-
-      it "should update the name and the description" do
-        new_name = 'Test Name'
-        new_description = 'Wonderful world'
-        patch :update, id: @rental.id, rental: { name: new_name, description: new_description }
+       assert_response :success
+       assert !flash[:success].empty?
+        assert_equal Rental.count, 1
+        rental = Rental.all.first
         
-        assert_response :success
-        rental = Rental.find(@rental.id)
-        assert !flash[:success].empty?
-        assert_equal rental.name, new_name
-        assert_equal rental.description, new_description
+        assert_equal rental.name, name
+        assert_equal rental.description, description
+        assert_equal rental.contact, contact
+        assert_equal rental.pet_friendly, true
+        assert_equal rental.kid_friendly, true
+        assert_equal rental.bedrooms.to_s, beds
+        assert_equal rental.bathrooms.to_s, baths
+        assert_equal rental.rate_per_night.to_s, rpn
+        assert_equal rental.rate_per_week.to_s, rpw
+        assert_equal rental.rate_per_month.to_s, rpm
+        assert_equal rental.base_rate_per_night.to_s, brpn
+        assert_equal rental.base_rate_per_week.to_s, brpw
+        assert_equal rental.base_rate_per_month.to_s, brpm
       end
     end
   end

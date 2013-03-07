@@ -91,6 +91,17 @@ GIT
       activesupport (>= 3.0)
       sprockets (~> 2.8)
 
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: c1ddf40cde98889523b778d8807b1a9922758986
+  specs:
+    paperclip (3.4.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -108,6 +119,10 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -227,6 +242,7 @@ DEPENDENCIES
   minitest-rails
   minitest-rails-shoulda
   minitest-rg
+  paperclip!
   pg
   rails!
   rvm-capistrano

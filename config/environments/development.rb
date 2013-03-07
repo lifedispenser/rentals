@@ -1,3 +1,5 @@
+Paperclip.options[:command_path] = "/usr/local/bin/"
+
 Rentals::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,5 +32,5 @@ Rentals::Application.configure do
   config.assets.debug = true
 #  config.assets.compile = true
 #  config.assets.initialize_on_precompile = false
-  
 end
+

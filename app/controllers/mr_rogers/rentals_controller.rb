@@ -37,14 +37,14 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
 
   private
     def post_params
-       params.require(:rental).permit(:name, :description)
+       params.require(:rental).permit(:name, :description, :pet_friendly, :kid_friendly, :bedrooms, :bathrooms, :rate_per_night, :rate_per_week, :rate_per_month, :contact, :base_rate_per_night, :base_rate_per_month, :base_rate_per_week)
     end
     
     def flashy
       if @rental.errors.empty?
-        flash[:success] = 'Saved successfully'
+        flash.now[:success] = 'Saved successfully'
       else
-        flash[:error] = 'There was an error saving'
+        flash.now[:error] = 'There was an error saving'
       end
     end
 end

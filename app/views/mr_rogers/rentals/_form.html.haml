@@ -8,5 +8,59 @@
     %label.control-label{for: 'rental_description'} Description
     .controls
       =f.text_area :description, placeholder: 'Description', class: 'input-block-level', rows: 5
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_night'} Customer rate per night
+    .controls
+      $
+      =f.text_field :rate_per_night, placeholder: 'Customer rate per night', class: 'input-large'
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_week'} Customer rate per week
+    .controls
+      $
+      =f.text_field :rate_per_week, placeholder: 'Customer rate per week', class: 'input-large'
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_month'} Customer rate per month
+    .controls
+      $
+      =f.text_field :rate_per_week, placeholder: 'Customer rate per month', class: 'input-large'
     
+  .control-group
+    .controls.controls-row
+      .span2
+        %label.checkbox{for: 'rental_pet_friendly'}
+          =f.check_box :pet_friendly
+          Pet Friendly
+      .span2
+        %label.checkbox{for: 'rental_kid_friendly'}
+          =f.check_box :kid_friendly
+          Kid Friendly
+
+  .control-group
+    %label.control-label{for: 'rental_contact'} Owner/Manager Contact Information
+    .controls
+      =f.text_area :contact, placeholder: 'Owner/Manager Contact Information', class: 'input-block-level', rows: 5
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_night'} Base rate per night
+    .controls
+      $
+      =f.text_field :rate_per_night, placeholder: 'Base rate per night', class: 'input-medium'
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_week'} Base rate per week
+    .controls
+      $
+      =f.text_field :rate_per_week, placeholder: 'Base rate per week', class: 'input-medium'
+
+  .control-group
+    %label.control-label{for: 'rental_rate_per_month'} Base rate per month
+    .controls
+      $
+      =f.text_field :rate_per_week, placeholder: 'Base rate per month', class: 'input-medium'
+
+  .control-group
     %button.btn{type: 'submit'} Save
+    =link_to 'Delete', mr_rogers_rental_path(@rental), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' unless @rental.id.nil?
