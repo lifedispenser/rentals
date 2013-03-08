@@ -82,4 +82,13 @@ Rentals::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'surfinglangosta',
+      :access_key_id => 'AKIAIHSLQ7YJEWDDPRAA',
+      :secret_access_key => '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'
+    }
+  }
 end

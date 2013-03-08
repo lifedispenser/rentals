@@ -6,6 +6,7 @@ Vacation rental application
 
 TODO:
 
-* Decide whether to ditch emberjs or not considering the SEO implications.
-* Ditch the second api server because of the silliness required for cross domain support (that and it still doesn't work correctly). move everything back into the rentals app but keep it a separate API in controllers/api if I keep emberjs
-* Add active admin
+* Test rentals dependent destroy of photos
+* test photos controller
+* move photo uploader into a modal to clean up the UI
+* add tests for my rental form input helpers

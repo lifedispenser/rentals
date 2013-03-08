@@ -3,5 +3,5 @@ class Rental < ActiveRecord::Base
   validates :description, presence: true
   validates :contact, presence: true
   
-  has_many :photos
+  has_many :photos, :dependent => :destroy
 end

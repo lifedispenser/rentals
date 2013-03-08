@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130307162726) do
+ActiveRecord::Schema.define(version: 20130308173519) do
 
   create_table "photos", force: true do |t|
     t.integer  "rental_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130307162726) do
     t.string   "asset_content_type"
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
+    t.string   "asset_fingerprint"
   end
 
   create_table "rails_admin_histories", force: true do |t|

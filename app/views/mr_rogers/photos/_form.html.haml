@@ -1,0 +1,35 @@
+.container
+  %h2 Upload photo
+  =form_for [:mr_rogers, Photo.new], html: { multipart: true, id: "fileupload" } do |f|
+    = f.hidden_field :rental_id, value: @rental.id
+    .row.fileupload-buttonbar
+      .span7
+        %span.btn.btn-success.fileinput-button
+          %i.icon-plus.icon-white
+          %span Add files...
+          = f.file_field :asset, multiple: true
+
+        %button.btn.btn-primary.start{type: 'submit'}
+          %i.icon-upload.icon-white
+          %span Start upload
+
+        %button.btn.btn-warning.cancel{type: 'reset'}
+          %i.icon-ban-circle.icon-white
+          %span Cancel upload
+
+        %button.btn.btn-danger.delete{type: 'button'}
+          %i.icon-trash.icon-white
+          %span Delete
+
+        %input.toggle{type: 'checkbox'}
+
+      .span5
+        .progress.progress-success.progress-striped.active.fade
+          .bar{style: 'width:0%;'}
+
+    .fileupload-loading
+    %br
+    %table.table.table-striped
+      %tbody.files{'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
+
+=render partial: 'mr_rogers/photos/upload_scripts'

@@ -32,5 +32,14 @@ Rentals::Application.configure do
   config.assets.debug = true
 #  config.assets.compile = true
 #  config.assets.initialize_on_precompile = false
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'surfinglangosta',
+      :access_key_id => 'AKIAIHSLQ7YJEWDDPRAA',
+      :secret_access_key => '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'
+    }
+  }
 end
 

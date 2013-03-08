@@ -1,3 +1,13 @@
 %h1 Edit Rental
 
 =render partial: 'form'
+
+%h2 Photos
+%ul.thumbnails
+  -@rental.photos.each do |photo|
+    %li.span4
+      .thumbnail
+        =image_tag(photo.asset.url(:thumb))
+        =link_to 'Delete', mr_rogers_photo_path(photo), method: 'DELETE', class: 'btn btn-danger', remote: true
+
+=render partial: 'mr_rogers/photos/form'
