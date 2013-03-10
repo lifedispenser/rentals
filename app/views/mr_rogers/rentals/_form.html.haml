@@ -65,5 +65,4 @@
       =f.text_field :base_rate_per_week, placeholder: 'Base rate per month', class: 'input-medium'
 
   .control-group
-    %button.btn{type: 'submit'} Save
-    =link_to 'Delete', mr_rogers_rental_path(@rental), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' unless @rental.id.nil?
+    %button.btn.btn-success{type: 'submit'} Save

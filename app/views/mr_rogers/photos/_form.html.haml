@@ -1,35 +1,44 @@
-.container
-  %h2 Upload photo
-  =form_for [:mr_rogers, Photo.new], html: { multipart: true, id: "fileupload" } do |f|
-    = f.hidden_field :rental_id, value: @rental.id
-    .row.fileupload-buttonbar
-      .span7
-        %span.btn.btn-success.fileinput-button
-          %i.icon-plus.icon-white
-          %span Add files...
-          = f.file_field :asset, multiple: true
+=link_to 'Upload Photos', '#uploadPhotosModal', role: 'button', class: 'btn btn-primary', 'data-toggle' => 'modal'
 
-        %button.btn.btn-primary.start{type: 'submit'}
-          %i.icon-upload.icon-white
-          %span Start upload
+#uploadPhotosModal.modal.hide.fade
+  .modal-header
+    %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
+    %h3 Upload Photos
 
-        %button.btn.btn-warning.cancel{type: 'reset'}
-          %i.icon-ban-circle.icon-white
-          %span Cancel upload
+  .modal-body
+    =form_for [:mr_rogers, Photo.new], html: { multipart: true, id: "fileupload" } do |f|
+      = f.hidden_field :rental_id, value: @rental.id
+      .row.fileupload-buttonbar
+        .span7
+          %span.btn.btn-success.fileinput-button
+            %i.icon-plus.icon-white
+            %span Add files...
+            = f.file_field :asset, multiple: true
 
-        %button.btn.btn-danger.delete{type: 'button'}
-          %i.icon-trash.icon-white
-          %span Delete
+          %button.btn.btn-primary.start{type: 'submit'}
+            %i.icon-upload.icon-white
+            %span Start upload
 
-        %input.toggle{type: 'checkbox'}
+          %button.btn.btn-warning.cancel{type: 'reset'}
+            %i.icon-ban-circle.icon-white
+            %span Cancel upload
 
-      .span5
-        .progress.progress-success.progress-striped.active.fade
-          .bar{style: 'width:0%;'}
+          %button.btn.btn-danger.delete{type: 'button'}
+            %i.icon-trash.icon-white
+            %span Delete
 
-    .fileupload-loading
-    %br
-    %table.table.table-striped
-      %tbody.files{'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
+          %input.toggle{type: 'checkbox'}
+
+        .span5
+          .progress.progress-success.progress-striped.active.fade
+            .bar{style: 'width:0%;'}
+
+      .fileupload-loading
+      %br
+      %table.table.table-striped
+        %tbody.files{'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
+
+  .modal-footer
+    %button.btn{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'} Close
 
 =render partial: 'mr_rogers/photos/upload_scripts'

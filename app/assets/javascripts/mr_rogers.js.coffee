@@ -6,3 +6,8 @@ $ ->
   $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
     alert "Deleted."
     
+  $('#uploadPhotosModal').on "hidden", () ->
+    alert('Refresh photo list')
+
+    
+    

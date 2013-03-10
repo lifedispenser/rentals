@@ -60,4 +60,9 @@ group :test do
   gem 'minitest-rails-shoulda'
   gem 'minitest-matchers'
   gem 'minitest-rg'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-metadata'
+  gem 'capybara_minitest_spec'
+  gem 'capybara-webkit'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
