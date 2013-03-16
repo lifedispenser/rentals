@@ -6,7 +6,10 @@ require "minitest/rails/capybara"
 require "paperclip/matchers"
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# The following doesn't work. it still creates the log file
+#  Capybara::Selenium::Driver.new(app, :browser => :chrome, args: %w[--ignore-certificate-errors --disable-popup-blocking --disable-translate --silent --disable-logging])
+
+ Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
 #Selenium::WebDriver::Firefox::Binary.path = "/Applications/FirefoxAurora.app/Contents/MacOS/firefox"
@@ -39,8 +42,8 @@ class ActiveSupport::TestCase
   
   def login user
     visit mr_rogers_path
-    fill_in 'user_email', :with => @user.email
-    fill_in 'user_password', :with => 'testtest'
+    fill_in 'user_email', with: @user.email
+    fill_in 'user_password', with: 'testtest'
     click_on('Sign in')
     page.must_have_content "Admin Dashboard"
   end

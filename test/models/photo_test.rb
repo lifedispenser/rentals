@@ -13,7 +13,7 @@ describe Photo do
     end
 
     it "should pass validation" do
-      @photo.asset = File.new(Rails.root + 'test/assets/images/rails.png')
+      @photo.asset = File.new(Rails.root + 'test/fixtures/images/rails.png')
       @photo.rental = FactoryGirl.create :rental
       assert @photo.save == true, "Validations should pass"
     end

@@ -6,7 +6,9 @@ Vacation rental application
 
 TODO:
 
-* Add thumbnail preview refresh after modal close
-* Test rentals dependent destroy of photos
-* test photos controller
 * add tests for my rental form input helpers
+* Get tests to either delete the public/system it creates or don't create it in the first place
+
+* Add thumbnail preview refresh after modal close
+
+* Get tests to either delete chromedriver.log or put it into /log

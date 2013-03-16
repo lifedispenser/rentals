@@ -20,4 +20,17 @@ describe Rental do
       assert @rental.save == true, "Validations should pass"
     end
   end
+  
+  context "destroy dependent" do
+    before do
+      Photo.destroy_all
+      @rental = FactoryGirl.create(:rental_with_photos)
+    end
+    
+    it "should delete all associated photos" do
+      assert Photo.all.count == 5
+      @rental.destroy
+      assert Photo.all.count == 0
+    end
+  end
 end
