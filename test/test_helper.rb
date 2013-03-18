@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'minitest/autorun'
 require "minitest/rails/shoulda"
 require "minitest/rails/capybara"
 require "paperclip/matchers"
@@ -48,9 +49,24 @@ class ActiveSupport::TestCase
     page.must_have_content "Admin Dashboard"
   end
   
+  def helper
+    @helper ||= DummyClass.new
+  end
 end
 
 
 class ActionController::TestCase
   include Devise::TestHelpers
+end
+
+
+class HelperTest < MiniTest::Spec
+  include ActiveSupport::Testing::SetupAndTeardown
+  include ActionView::TestCase::Behavior
+  register_spec_type(/Helper$/, self)
+end
+
+class DummyClass < ActionView::Base
+  # include each of your Rails helpers here
+  include MrRogersHelper
 end

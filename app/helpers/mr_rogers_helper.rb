@@ -1,6 +1,6 @@
 module MrRogersHelper
   def nav_class(link)
-    controller.controller_name.downcase.include?(link) ? 'active' : ''
+    'active' if controller.controller_name.downcase.include?(link)
   end
   
   def input_class(obj, attribute)
