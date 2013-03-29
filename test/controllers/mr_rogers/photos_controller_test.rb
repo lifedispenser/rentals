@@ -68,6 +68,7 @@ describe MrRogers::PhotosController do
   context "#edit" do
     context "no authentication" do
       it "should redirect to signin" do
+        skip "Edit isn't in use yet"
         get :edit, id: 0, :format => :json
         assert_response 401
       end
@@ -118,13 +119,22 @@ describe MrRogers::PhotosController do
     end
     
     context "with authentication" do
-      it "should respond with a success" do
-        skip "Update isn't in use yet"
+      before :each do
         @user = FactoryGirl.create :user
         @photo = FactoryGirl.create :photo
         sign_in @user
-        patch :update, id: @photo.id, photo: {}, :format => :json
+      end
+      
+      it "should respond with a success and update the banner flag" do
+        patch :update, id: @photo.id, photo: {banner: true}, :format => :json
         assert_response :success
+        assert Photo.find(@photo.id).banner?
+      end
+
+      it "should respond with a success and update the featured flag" do
+        patch :update, id: @photo.id, photo: {featured: true}, :format => :json
+        assert_response :success
+        assert Photo.find(@photo.id).featured?
       end
     end
   end

@@ -4,8 +4,16 @@
   -@rental.photos.each do |photo|
     %li.span2.text-center
       .thumbnail
-        =image_tag(photo.asset.url(:thumb))
-        =link_to 'Delete', mr_rogers_photo_path(photo), method: 'DELETE', class: 'btn btn-danger', remote: true
+        %p
+          =image_tag(photo.asset.url(:thumb))
+        %p
+          =link_to 'Banner', mr_rogers_photo_path(id: photo.id, photo: { banner: false }), method: 'PATCH', remote: true, class: "unbanner btn btn-primary #{'hide' unless photo.banner}"
+          =link_to 'Banner', mr_rogers_photo_path(id: photo.id, photo: { banner: true }), method: 'PATCH', remote: true, class: "banner btn #{'hide' if photo.banner}"
+        %p
+          =link_to 'Featured', mr_rogers_photo_path(id: photo.id, photo: { featured: false }), method: 'PATCH', remote: true, class: "unfeature btn btn-primary #{'hide' unless photo.featured}"
+          =link_to 'Featured', mr_rogers_photo_path(id: photo.id, photo: { featured: true }), method: 'PATCH', remote: true, class: "feature btn #{'hide' if photo.featured}"
+
+        =link_to 'Delete', mr_rogers_photo_path(photo), method: 'DELETE', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', remote: true
 
 =render partial: 'mr_rogers/photos/form'
 

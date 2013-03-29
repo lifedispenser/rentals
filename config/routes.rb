@@ -52,6 +52,6 @@ Rentals::Application.routes.draw do
   
   namespace :mr_rogers do
     resources :rentals
-    resources :photos
+    resources :photos, except: [:edit]
   end
 end

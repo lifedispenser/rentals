@@ -44,9 +44,61 @@ feature 'Admin Rental Photos Feature Test' do
     page.find('.datatable tbody tr:first-child td:first-child a').click
     page.must_have_content 'Edit Rental'
 
-    page.find('.thumbnails li:first-child .thumbnail a').click
+    delete_selector = [:css, '.thumbnail .btn', {:text => 'Delete'}]
+    assert page.find(*delete_selector).visible?
+    page.find(*delete_selector).click
+    page.driver.browser.switch_to.alert.accept
     (1..5).each {|i| sleep(1) unless Photo.all.count == 0}
     assert_equal 0, Photo.all.count
   end
+
+  scenario 'should update photo banner flag', js: true do
+    FactoryGirl.create :rental_with_photos, photo_count: 1
+    refute Photo.last.banner
+    
+    visit mr_rogers_rentals_path
+    page.must_have_content 'All Rentals'
+    page.find('.datatable tbody tr:first-child td:first-child a').click
+    page.must_have_content 'Edit Rental'
+
+    btn = page.find(".banner")
+    assert btn.visible?, 'The banner button should be visible'
+    btn.click
+
+    (1..5).each {|i| sleep(1) unless Photo.last.banner }
+    assert Photo.last.banner
+
+    skip "The banner button click event isn't working in capybara. Maybe because its also doing a UJS AJAX call on click too."
+    btn = page.find(".banner")
+    refute btn.visible?, 'The banner button should be invisible'
+
+    btn = page.find(".unbanner")
+    assert btn.visible?, 'The un-banner button should be visible'
+  end
+
+  scenario 'should update photo feature flag', js: true do
+    FactoryGirl.create :rental_with_photos, photo_count: 1
+    refute Photo.last.banner
+    
+    visit mr_rogers_rentals_path
+    page.must_have_content 'All Rentals'
+    page.find('.datatable tbody tr:first-child td:first-child a').click
+    page.must_have_content 'Edit Rental'
+
+    btn = page.find(".feature")
+    assert btn.visible?, 'The feature button should be visible'
+    btn.click
+
+    (1..5).each {|i| sleep(1) unless Photo.last.featured }
+    assert Photo.last.featured
+
+    skip "The feature button click event isn't working in capybara. Maybe because its also doing a UJS AJAX call on click too."
+    btn = page.find(".feature")
+    refute btn.visible?, 'The feature button should be invisible'
+
+    btn = page.find(".unfeature")
+    assert btn.visible?, 'The un-feature button should be visible'
+  end
+
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130308173519) do
+ActiveRecord::Schema.define(version: 20130319012601) do
 
   create_table "photos", force: true do |t|
     t.integer  "rental_id"
@@ -20,7 +20,12 @@ ActiveRecord::Schema.define(version: 20130308173519) do
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
     t.string   "asset_fingerprint"
+    t.boolean  "banner",             default: false
+    t.boolean  "featured",           default: false
   end
+
+  add_index "photos", ["banner"], name: "index_photos_on_banner"
+  add_index "photos", ["featured"], name: "index_photos_on_featured"
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

@@ -31,7 +31,7 @@ class MrRogers::PhotosController < MrRogers::ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    if @photo.update_attributes(params[:photo])
+    if @photo.update_attributes(post_params)
       head :no_content
     else
       render json: @photo.errors, status: :unprocessable_entity
@@ -43,12 +43,12 @@ class MrRogers::PhotosController < MrRogers::ApplicationController
     @photo.destroy
     head :no_content
   end
-  
+
   private
     def post_params
-      raw_parameters = { photo: { rental_id: params[:photo][:rental_id], asset: params[:photo][:asset].first } }
-      parameters = ActionController::Parameters.new(raw_parameters)
-      parameters.require(:photo).permit(:rental_id, :asset)
+      new_params = params
+      new_params[:photo][:asset] = params[:photo][:asset].first unless new_params[:photo][:asset].nil?
+      new_params.require(:photo).permit(:rental_id, :asset, :banner, :featured)
     end
   
 end
