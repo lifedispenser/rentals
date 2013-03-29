@@ -18,4 +18,15 @@ describe Photo do
       assert @photo.save == true, "Validations should pass"
     end
   end
+  
+  context "featured scope" do
+    before do
+      FactoryGirl.create_list(:photo, 5)
+      @photo = FactoryGirl.create(:photo, featured: true)
+    end
+    
+    it "should return the featured photo" do
+      assert_equal Photo.featured.to_a, [@photo]
+    end
+  end
 end

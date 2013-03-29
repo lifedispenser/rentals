@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @rentals = Rental.all
+    @featured_rentals = Rental.featured
   end
 end

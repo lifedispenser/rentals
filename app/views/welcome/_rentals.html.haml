@@ -1,25 +1,7 @@
 .container.marketing
-  .row
-    .span4
-      =image_tag 'rental-test-1.jpg', class: 'img-polaroid'
-      %h2 Relax in Style
-      %p
-        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-      %p
-        =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'
-
-    .span4
-      =image_tag 'rental-test-1.jpg', class: 'img-polaroid'
-      %h2 Relax in Style
-      %p
-        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-      %p
-        =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'
-
-    .span4
-      =image_tag 'rental-test-1.jpg', class: 'img-polaroid'
-      %h2 Relax in Style
-      %p
-        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-      %p
-        =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'
+  -offset = 0
+  -while offset < @featured_rentals.count
+    .row
+      -@featured_rentals[offset..(offset + 2)].each do |rental|
+        =render partial: 'featured_rental', object: rental
+      -offset += 3

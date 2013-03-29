@@ -33,4 +33,29 @@ describe Rental do
       assert Photo.all.count == 0
     end
   end
+  
+  context "featured scope" do
+    before do
+      FactoryGirl.create_list(:rental_with_photos, 5)
+      @rental = FactoryGirl.create(:rental_with_photos)
+      @rental.photos << FactoryGirl.create(:photo, featured: true)
+    end
+    
+    it "should return the rental with a featured photo" do
+      assert_equal Rental.featured.to_a, [@rental]
+    end
+  end
+  
+  context "featured photo" do
+    before do
+      @rental = FactoryGirl.create(:rental_with_photos)
+      @featured_photo1 = FactoryGirl.create(:photo, featured: true, rental: @rental)
+      @featured_photo2 = FactoryGirl.create(:photo, featured: true, rental: @rental)
+    end
+    
+    it "should return a featured photo" do
+      assert [@featured_photo1, @featured_photo2].include? @rental.featured_photo
+    end
+  end
+  
 end

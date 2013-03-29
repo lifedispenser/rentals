@@ -4,16 +4,18 @@ class Photo < ActiveRecord::Base
     styles: {
       thumb: '100x100>',
       square: '200x200#',
-      medium: '300x300>'
+      medium: '300x300>',
+      featured: '310x210>'
     }
   
   validates :rental_id, presence: true
 
   validates_attachment :asset, presence: true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"] },
-    size: { in: 0..109.kilobytes }
+    size: { in: 0..1000.kilobytes }
 
-
+  scope :featured, -> { where('featured is true') }
+  
   include Rails.application.routes.url_helpers
 
   def to_jq_photo

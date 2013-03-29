@@ -1,0 +1,8 @@
+.span4
+  =image_tag featured_rental.featured_photo.asset.url(:medium), class: 'img-polaroid'
+  %h2
+    =featured_rental.name
+  %p
+    =featured_rental.description
+  %p
+    =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'
