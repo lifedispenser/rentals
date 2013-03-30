@@ -1,4 +1,7 @@
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
 //= require jquery-fileupload
+//= require datatables
 
 $ ->
   $("a[data-remote].btn-danger").on "ajax:beforeSend", (xhr) ->

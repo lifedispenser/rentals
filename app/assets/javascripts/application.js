@@ -14,8 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert
@@ -33,4 +31,3 @@
 //= require_self
 
 //= require carousel
-//= require datatables
