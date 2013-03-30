@@ -12,7 +12,7 @@ class Photo < ActiveRecord::Base
 
   validates_attachment :asset, presence: true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"] },
-    size: { in: 0..1000.kilobytes }
+    size: { in: 0..5000.kilobytes }
 
   scope :featured, -> { where('featured is true') }
   
