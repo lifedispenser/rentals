@@ -1,19 +1,37 @@
 GIT
+  remote: git://github.com/aws/aws-sdk-ruby.git
+  revision: c767e023ee42b2d274a201992af3926c320dad07
+  specs:
+    aws-sdk (1.8.5)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
+
+GIT
   remote: git://github.com/bmabey/database_cleaner.git
-  revision: 8002b4695602bf1e2d1f0b5f7d05d616360608a4
+  revision: 466ccfdbd72dc67c4e43eeee7551b38721347c44
   specs:
     database_cleaner (0.9.1)
 
 GIT
   remote: git://github.com/haml/haml.git
-  revision: 0cc5c437a9019530816d1507794327667d2d73d0
+  revision: db78aa5c9442a659803a3e35c9060c1c299b5a5d
   specs:
     haml (4.1.0.alpha.0)
       tilt
 
 GIT
+  remote: git://github.com/onomojo/sprockets-rails.git
+  revision: 707db5c9990d68ab9a691de13bf5ab2a62b24015
+  specs:
+    sprockets-rails (2.0.0.rc3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: d29b744d92a380e61d0c62149cc60e91ec4ba0f2
+  revision: 9a8cb011d7c22726b59ab7c101d06dbf995ca222
   branch: rails4
   specs:
     devise (2.2.3)
@@ -24,9 +42,9 @@ GIT
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 518d6b34e863d68b009674a45a1fe5105a38aee1
+  revision: 933ea218116645eafaf3b7ea5695520db0f9d9ba
   specs:
-    arel (4.0.0.beta1.20130225132415)
+    arel (4.0.0.beta2.20130314230643)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
@@ -37,8 +55,16 @@ GIT
       railties (>= 4.0.0.beta, < 5.0)
 
 GIT
+  remote: git://github.com/rails/jquery-rails.git
+  revision: e51fc324e635efb4d2418acb5aabe3101c8bfb59
+  specs:
+    jquery-rails (2.2.1)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+
+GIT
   remote: git://github.com/rails/rails.git
-  revision: 99775fd1612217aaba2f3580b4204c6b75c04249
+  revision: cbfa91a216384489e66f5e70eecebc455d334908
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -56,13 +82,13 @@ GIT
       activemodel (= 4.0.0.beta1)
       activerecord-deprecated_finders (~> 0.0.3)
       activesupport (= 4.0.0.beta1)
-      arel (~> 4.0.0.beta1)
+      arel (~> 4.0.0.beta2)
     activesupport (4.0.0.beta1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
-      tzinfo (~> 0.3.33)
+      tzinfo (~> 0.3.37)
     rails (4.0.0.beta1)
       actionmailer (= 4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -75,8 +101,7 @@ GIT
       actionpack (= 4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
       rake (>= 0.8.7)
-      rdoc (~> 3.4)
-      thor (>= 0.17.0, < 2.0)
+      thor (>= 0.18.1, < 2.0)
 
 GIT
   remote: git://github.com/rails/sass-rails.git
@@ -89,17 +114,15 @@ GIT
       tilt (~> 1.3)
 
 GIT
-  remote: git://github.com/rails/sprockets-rails.git
-  revision: afce1e65f7c6df4ae96522b26e755915d238ff80
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 494f752b8eb8350f33841c822a67d014c869219f
   specs:
-    sprockets-rails (2.0.0.rc3)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (~> 2.8)
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
 
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: c1ddf40cde98889523b778d8807b1a9922758986
+  revision: f28d75b81818386407f1ebd505058e0236920fd9
   specs:
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -112,13 +135,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     activerecord-deprecated_finders (0.0.3)
-    atomic (1.0.1)
-    aws-sdk (1.8.3.1)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
-      uuidtools (~> 2.1)
+    atomic (1.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.0.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
@@ -129,7 +148,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    capybara (2.0.2)
+    capybara (2.0.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -151,7 +170,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.5.0)
+    coffee-script-source (1.6.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -162,30 +181,25 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
-    ffi (1.4.0)
-    highline (1.6.15)
+    ffi (1.6.0)
+    highline (1.6.16)
     hike (1.2.1)
     i18n (0.6.4)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
-    jquery-datatables-rails (1.11.2)
-      jquery-rails
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
-    jquery-rails (2.2.1)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
     json (1.7.7)
     kgio (2.8.0)
-    libv8 (3.11.8.13)
+    libv8 (3.11.8.17)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     metaclass (0.0.1)
     mime-types (1.21)
-    minitest (4.6.2)
+    minitest (4.7.0)
     minitest-capybara (0.1.0)
       capybara (>= 1.0)
       minitest-matchers (>= 1.2)
@@ -208,30 +222,28 @@ GEM
     minitest-rg (1.1.0)
     mocha (0.10.5)
       metaclass (~> 0.0.1)
-    multi_json (1.6.1)
+    multi_json (1.7.2)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.5)
+    net-ssh (2.6.6)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    nokogiri (1.5.6)
+    nokogiri (1.5.9)
     orm_adapter (0.4.0)
-    pg (0.14.1)
+    pg (0.15.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
     raindrops (0.10.0)
-    rake (10.0.3)
-    rdoc (3.12.2)
-      json (~> 1.4)
-    ref (1.0.2)
+    rake (10.0.4)
+    ref (1.0.4)
     rubyzip (0.9.9)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
-    sass (3.2.6)
+    sass (3.2.7)
     selenium-webdriver (2.31.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -248,16 +260,16 @@ GEM
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
-    thor (0.17.0)
+    thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.4)
+    tilt (1.3.6)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.0.0)
+    turbolinks (1.1.0)
       coffee-rails
-    tzinfo (0.3.35)
+    tzinfo (0.3.37)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -278,7 +290,7 @@ PLATFORMS
 
 DEPENDENCIES
   arel!
-  aws-sdk
+  aws-sdk!
   bootstrap-sass
   capistrano
   capybara-webkit
@@ -290,9 +302,9 @@ DEPENDENCIES
   faker
   haml!
   jbuilder (~> 1.0.1)
-  jquery-datatables-rails
+  jquery-datatables-rails!
   jquery-fileupload-rails
-  jquery-rails
+  jquery-rails!
   minitest-matchers
   minitest-metadata
   minitest-rails

@@ -6,6 +6,8 @@ Vacation rental application
 
 TODO:
 
++ Fix asset precompile so mr_rogers assets gets compiled
+
 * Fix server permissions problem on 'cap deploy:restart'
 
 * Make homepage use banner photos
