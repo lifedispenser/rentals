@@ -6,9 +6,8 @@ Vacation rental application
 
 TODO:
 
-+ Fix asset precompile so mr_rogers assets gets compiled
-
-* Fix server permissions problem on 'cap deploy:restart'
+* Limit how much of the rental description shows on the homepage featured_rentals
+* Fix paperclip resize/crop of images - see http://surfinglangosta.com/mr_rogers/rentals/1/edit
 
 * Make homepage use banner photos
 * Add thumbnail preview refresh after modal close

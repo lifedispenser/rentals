@@ -38,8 +38,7 @@ describe MrRogers::PhotosController do
         get :show, id: @photo.id, :format => :json
         assert_response :success
         body = JSON.parse(response.body)
-        refute_nil body['photo']
-        assert body['photo']['id'] == @photo.id
+        assert body['id'] == @photo.id
       end
     end
   end
@@ -59,8 +58,7 @@ describe MrRogers::PhotosController do
         get :new, :format => :json
         assert_response :success
         body = JSON.parse(response.body)
-        refute_nil body['photo']
-        assert_nil body['photo']['id']
+        assert_nil body['id']
       end
     end
   end
