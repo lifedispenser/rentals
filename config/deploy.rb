@@ -69,6 +69,9 @@ after "assets:precompile", "deploy:fix_permissions"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
  
+# Restart unicorn
+after 'deploy:update', 'deploy:restart'
+ 
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"

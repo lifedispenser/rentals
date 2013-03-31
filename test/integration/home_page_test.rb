@@ -15,6 +15,9 @@ feature "HomePage Feature Test" do
     page.must_have_content "Surfing Langosta"
     page.wont_have_content "Admin Dashboard"
 
+    selector = [:css, 'footer p', {:text => "#{Time.now.year} SurfingLangosta"}]
+    page.must_have_selector *selector
+
     page.must_have_selector '.carousel-inner .item', :count => 3
     page.must_have_selector '.marketing .row .span4', :count => 2
 

@@ -6,13 +6,13 @@ Vacation rental application
 
 TODO:
 
-* Add a 'featured_description' attribute to rentals and display on the homepage instead of the normal description
-
 * Fix paperclip resize/crop of images - see http://surfinglangosta.com/mr_rogers/rentals/1/edit
 * Make homepage use banner photos
 * Add thumbnail preview refresh after modal close
 * Add rental details page
+* Add contact form to frontend
 
+* Create live contact management/sales interface (maybe using socket.io with ember.js or backbone.js)
 
 * Add tooltips to the admin menu to explain each of the rental fields
 * Get tests to either delete the public/system it creates or don't create it in the first place
