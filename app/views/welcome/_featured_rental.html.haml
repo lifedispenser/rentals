@@ -3,6 +3,6 @@
   %h2
     =featured_rental.name
   %p
-    =featured_rental.description
+    =featured_rental.featured_description || featured_rental.description[0..255]
   %p
     =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'

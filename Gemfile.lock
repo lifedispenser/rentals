@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: cbfa91a216384489e66f5e70eecebc455d334908
+  revision: 3b0b573ac3ecbec5b1fa021abbe86b267bbefb8c
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -198,7 +198,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     metaclass (0.0.1)
-    mime-types (1.21)
+    mime-types (1.22)
     minitest (4.7.0)
     minitest-capybara (0.1.0)
       capybara (>= 1.0)

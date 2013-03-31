@@ -5,6 +5,12 @@
       =f.text_field :name, placeholder: 'Name', class: 'input-block-level'
       =input_error_help(@rental, :name)
           
+  .control-group{class: input_class(@rental,:featured_description) }
+    %label.control-label{for: 'rental_featured_description'} Featured Description
+    .controls
+      =f.text_area :featured_description, placeholder: 'Featured Description', class: 'input-block-level', rows: 5
+      =input_error_help(@rental, :featured_description)
+          
   .control-group{class: input_class(@rental,:description) }
     %label.control-label{for: 'rental_description'} Description
     .controls

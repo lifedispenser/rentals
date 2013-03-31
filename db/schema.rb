@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130319012601) do
+ActiveRecord::Schema.define(version: 20130331145300) do
 
   create_table "photos", force: true do |t|
     t.integer  "rental_id"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20130319012601) do
     t.boolean  "featured",           default: false
   end
 
-  add_index "photos", ["banner"], name: "index_photos_on_banner"
-  add_index "photos", ["featured"], name: "index_photos_on_featured"
+  add_index "photos", ["banner"], name: "index_photos_on_banner", using: :btree
+  add_index "photos", ["featured"], name: "index_photos_on_featured", using: :btree
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20130319012601) do
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "rentals", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "bedrooms",            precision: 3, scale: 1
-    t.decimal  "bathrooms",           precision: 3, scale: 1
-    t.boolean  "pet_friendly",                                default: false
-    t.boolean  "kid_friendly",                                default: false
+    t.decimal  "bedrooms",             precision: 3, scale: 1
+    t.decimal  "bathrooms",            precision: 3, scale: 1
+    t.boolean  "pet_friendly",                                 default: false
+    t.boolean  "kid_friendly",                                 default: false
     t.integer  "rate_per_night"
     t.integer  "rate_per_week"
     t.integer  "rate_per_month"
@@ -56,15 +56,16 @@ ActiveRecord::Schema.define(version: 20130319012601) do
     t.integer  "base_rate_per_night"
     t.integer  "base_rate_per_week"
     t.integer  "base_rate_per_month"
+    t.string   "featured_description"
   end
 
-  add_index "rentals", ["bathrooms"], name: "index_rentals_on_bathrooms"
-  add_index "rentals", ["bedrooms"], name: "index_rentals_on_bedrooms"
-  add_index "rentals", ["kid_friendly"], name: "index_rentals_on_kid_friendly"
-  add_index "rentals", ["pet_friendly"], name: "index_rentals_on_pet_friendly"
-  add_index "rentals", ["rate_per_month"], name: "index_rentals_on_rate_per_month"
-  add_index "rentals", ["rate_per_night"], name: "index_rentals_on_rate_per_night"
-  add_index "rentals", ["rate_per_week"], name: "index_rentals_on_rate_per_week"
+  add_index "rentals", ["bathrooms"], name: "index_rentals_on_bathrooms", using: :btree
+  add_index "rentals", ["bedrooms"], name: "index_rentals_on_bedrooms", using: :btree
+  add_index "rentals", ["kid_friendly"], name: "index_rentals_on_kid_friendly", using: :btree
+  add_index "rentals", ["pet_friendly"], name: "index_rentals_on_pet_friendly", using: :btree
+  add_index "rentals", ["rate_per_month"], name: "index_rentals_on_rate_per_month", using: :btree
+  add_index "rentals", ["rate_per_night"], name: "index_rentals_on_rate_per_night", using: :btree
+  add_index "rentals", ["rate_per_week"], name: "index_rentals_on_rate_per_week", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20130319012601) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -112,6 +112,7 @@ describe MrRogers::RentalsController do
 
       it "should create a rental and redirect to rentals index" do
         name = 'Test Name'
+        featured_description = 'Perfect world'
         description = 'Wonderful world'
         contact = 'Someone Special'
         beds = '3.0'
@@ -123,6 +124,7 @@ describe MrRogers::RentalsController do
         brpw = '100'
         brpm = '200'
         post :create, rental: { name: name,
+                                featured_description: featured_description,
                                 description: description,
                                 contact: contact,
                                 bedrooms: beds,
@@ -143,6 +145,7 @@ describe MrRogers::RentalsController do
         rental = Rental.all.first
         
         assert_equal rental.name, name
+        assert_equal rental.featured_description, featured_description
         assert_equal rental.description, description
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true
@@ -236,6 +239,7 @@ describe MrRogers::RentalsController do
 
       it "should update the rental information" do
         name = 'Test Name'
+        featured_description = 'Perfect world'
         description = 'Wonderful world'
         contact = 'Someone Special'
         beds = '3.0'
@@ -248,6 +252,7 @@ describe MrRogers::RentalsController do
         brpm = '200'
         patch :update, id: @rental.id, rental: {
                                                   name: name,
+                                                  featured_description: featured_description,
                                                   description: description,
                                                   contact: contact,
                                                   bedrooms: beds,
@@ -268,6 +273,7 @@ describe MrRogers::RentalsController do
         rental = Rental.all.first
         
         assert_equal rental.name, name
+        assert_equal rental.featured_description, featured_description
         assert_equal rental.description, description
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true

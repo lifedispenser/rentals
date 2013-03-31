@@ -9,7 +9,7 @@ feature 'Admin Rental Photos Feature Test' do
   end
 
   scenario 'should upload a new photo', js: true do
-    FactoryGirl.create :rental
+    rental = FactoryGirl.create :rental
     visit mr_rogers_rentals_path
     page.must_have_content 'All Rentals'
     page.find('.datatable tbody tr:first-child td:first-child a').click
