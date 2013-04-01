@@ -29,7 +29,8 @@ feature "HomePage Feature Test" do
     selector = [:css, '.span4 p', {:text => @rental2.description}]
     page.wont_have_selector *selector
 
-    selector = [:css, '.span4 p', {:text => @rental2.description[0..255]}]
+#    raise page.body.inspect + " AAAAA " + @rental2.description[0..255].inspect
+    selector = [:css, '.span4 p', {:text => @rental2.description[0..255].strip}]
     page.must_have_selector *selector
   end
 end

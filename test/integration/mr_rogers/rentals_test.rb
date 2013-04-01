@@ -10,10 +10,14 @@ feature 'Admin Rentals Feature Test' do
   end
 
   scenario 'should display the rentals datatable', js: true do
+    Rental.destroy_all
+    @rental = FactoryGirl.create :rental, description: Faker::Lorem.sentences(50).join(' ').to_s
     visit mr_rogers_rentals_path
     page.must_have_content 'All Rentals'
+
+    page.wont_have_content @rental.description
+    page.must_have_content @rental.description[0..255]
   end
-  
 
   scenario 'rentals datatable should paginate correctly', js: true do
     visit mr_rogers_rentals_path

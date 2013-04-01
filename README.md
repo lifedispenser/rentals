@@ -6,9 +6,15 @@ Vacation rental application
 
 TODO:
 
-* Fix paperclip resize/crop of images - see http://surfinglangosta.com/mr_rogers/rentals/1/edit
-* Make homepage use banner photos
 * Add thumbnail preview refresh after modal close
+
+* Add 5 more rentals to the live site
+* Make homepage use banner photos
+* Add random ordering for featured photos on homepage
+* Add a limit of 6 for featured photos on homepage
+* Add Google analytics
+
+* Fix paperclip resize/crop of images - see http://surfinglangosta.com/mr_rogers/rentals/1/edit
 * Add rental details page
 * Add contact form to frontend
 
@@ -18,7 +24,7 @@ TODO:
 * Get tests to either delete the public/system it creates or don't create it in the first place
 * Get tests to either delete chromedriver.log or put it into /log
 * Fix tests on my sprocket fork
-* DECIDE WHETHER TO OPEN SOURCE OR NOT
+* DECIDE WHETHER TO OPEN SOURCE OR NOT - IF SO MAKE SURE TO REMOVE ANY AWS CREDENTIALS!!!!!
 
 
 LICENSE

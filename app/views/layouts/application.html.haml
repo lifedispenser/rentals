@@ -11,9 +11,4 @@
     =yield :carousel
     .container
       =yield
-      %hr.divider
-      %footer
-        %p.pull-right
-          =link_to 'Back to top', '#'
-        %p
-          ="&copy; #{Time.now.year} SurfingLangosta, Inc.".html_safe
+      =render partial: 'shared/footer'
