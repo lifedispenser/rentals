@@ -5,4 +5,4 @@
   %p
     =featured_rental.featured_description || featured_rental.description[0..255]
   %p
-    =link_to 'View details &raquo;'.html_safe, '#', class: 'btn'
+    =link_to 'View details &raquo;'.html_safe, rental_path(featured_rental), class: 'btn'

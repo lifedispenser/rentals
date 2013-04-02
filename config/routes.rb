@@ -54,4 +54,6 @@ Rentals::Application.routes.draw do
     resources :rentals
     resources :photos, except: [:edit]
   end
+
+  resources :rentals, only: [:show]
 end
