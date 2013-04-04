@@ -2,7 +2,7 @@
   #splashCarousel.carousel.slide
     .carousel-inner
       .item.active
-        =image_tag @rental.featured_photo.asset.url(:medium)
+        =image_tag @rental.photos.first.asset.url(:medium)
 
         .container
           .carousel-caption
