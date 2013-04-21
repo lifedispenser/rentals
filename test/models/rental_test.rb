@@ -62,6 +62,14 @@ describe Rental do
     it "should return the rental with a featured photo" do
       assert_equal Rental.featured.to_a, [@rental]
     end
+
+    it "should return the featured rentals in random order" do
+      (1..100).each do |i|
+        rental = FactoryGirl.create(:rental)
+        FactoryGirl.create(:photo, rental: rental, featured: true)
+      end
+      assert_not_equal Rental.featured.to_a, Rental.featured.to_a
+    end
   end
   
   context "featured photo" do

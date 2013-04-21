@@ -5,7 +5,7 @@ class Rental < ActiveRecord::Base
   
   has_many :photos, :dependent => :destroy
 
-  scope :featured, -> { includes(:photos).where('photos.featured is true').references(:photos) }
+  scope :featured, -> { includes(:photos).where('photos.featured is true').references(:photos).order('RANDOM()') }
 
   def featured_photo
     if photos.empty?
