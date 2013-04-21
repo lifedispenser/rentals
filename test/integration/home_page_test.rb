@@ -6,7 +6,7 @@ feature "HomePage Feature Test" do
     @rental = FactoryGirl.create(:rental_with_photos)
     @photo1 = FactoryGirl.create(:photo, featured: true, rental: @rental)
 
-    @rental2 = FactoryGirl.create(:rental_with_photos, featured_description: nil, description: Faker::Lorem.sentences(10).join(' ').to_s)
+    @rental2 = FactoryGirl.create(:rental_with_photos)
     @photo2 = FactoryGirl.create(:photo, featured: true, rental: @rental2)
   end
 
@@ -25,14 +25,11 @@ feature "HomePage Feature Test" do
     page.must_have_selector '.marketing .row .span4', :count => 2
 
     page.must_have_selector "img[src='#{@photo1.asset.url(:medium)}']"
-    selector = [:css, '.span4 p', {:text => @rental.featured_description}]
+    selector = [:css, '.span4 p', {:text => @rental.description}]
     page.must_have_selector *selector
 
     page.must_have_selector "img[src='#{@photo2.asset.url(:medium)}']"
     selector = [:css, '.span4 p', {:text => @rental2.description}]
-    page.wont_have_selector *selector
-
-    selector = [:css, '.span4 p', {:text => @rental2.description[0..255].strip}]
     page.must_have_selector *selector
   end
 end

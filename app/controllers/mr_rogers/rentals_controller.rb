@@ -15,6 +15,7 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
   def create
     @rental = Rental.create(post_params)
     flashy
+#    raise @rental.errors.inspect unless @rental.errors.empty?
     @rental.errors.empty? ? (redirect_to action: :index) : (render :new)
   end
 
@@ -37,7 +38,7 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
 
   private
     def post_params
-       params.require(:rental).permit(:name, :featured_description, :description, :pet_friendly, :kid_friendly, :bedrooms, :bathrooms, :rate_per_night, :rate_per_week, :rate_per_month, :contact, :base_rate_per_night, :base_rate_per_month, :base_rate_per_week)
+       params.require(:rental).permit(:name, :description, :pet_friendly, :kid_friendly, :bedrooms, :bathrooms, :rate_per_night, :rate_per_week, :rate_per_month, :contact, :base_rate_per_night, :base_rate_per_month, :base_rate_per_week)
     end
     
     def flashy

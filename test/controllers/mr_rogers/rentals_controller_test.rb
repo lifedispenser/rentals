@@ -97,7 +97,7 @@ describe MrRogers::RentalsController do
 
       it "should create a rental and redirect to rentals index" do
         name = 'Test Name'
-        description = 'Wonderful world'
+        description = 'What a wonderful vacation rental. You will love it here.'
         contact = 'Someone Special'
         post :create, rental: { name: name, description: description, contact: contact }
         
@@ -112,8 +112,7 @@ describe MrRogers::RentalsController do
 
       it "should create a rental and redirect to rentals index" do
         name = 'Test Name'
-        featured_description = 'Perfect world'
-        description = 'Wonderful world'
+        description = 'What a wonderful vacation rental. You will love it here.'
         contact = 'Someone Special'
         beds = '3.0'
         baths = '1.5'
@@ -124,7 +123,6 @@ describe MrRogers::RentalsController do
         brpw = '100'
         brpm = '200'
         post :create, rental: { name: name,
-                                featured_description: featured_description,
                                 description: description,
                                 contact: contact,
                                 bedrooms: beds,
@@ -145,7 +143,6 @@ describe MrRogers::RentalsController do
         rental = Rental.all.first
         
         assert_equal rental.name, name
-        assert_equal rental.featured_description, featured_description
         assert_equal rental.description, description
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true
@@ -239,8 +236,7 @@ describe MrRogers::RentalsController do
 
       it "should update the rental information" do
         name = 'Test Name'
-        featured_description = 'Perfect world'
-        description = 'Wonderful world'
+        description = 'What a wonderful vacation rental. You will love it here.'
         contact = 'Someone Special'
         beds = '3.0'
         baths = '1.5'
@@ -252,7 +248,6 @@ describe MrRogers::RentalsController do
         brpm = '200'
         patch :update, id: @rental.id, rental: {
                                                   name: name,
-                                                  featured_description: featured_description,
                                                   description: description,
                                                   contact: contact,
                                                   bedrooms: beds,
@@ -268,12 +263,11 @@ describe MrRogers::RentalsController do
                                                    }
         
        assert_response :success
-       assert !flash[:success].empty?
+       assert flash[:success].present?
         assert_equal Rental.count, 1
         rental = Rental.all.first
         
         assert_equal rental.name, name
-        assert_equal rental.featured_description, featured_description
         assert_equal rental.description, description
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true

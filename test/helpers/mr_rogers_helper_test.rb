@@ -33,9 +33,14 @@ describe MrRogersHelper do
   end
 
   describe "input_error_help" do
-    it "should return error help" do
+    it "should return all error help" do
       rental = Rental.create
-      assert_equal "<span class='help-inline'>[\"can't be blank\"]</span>", @helper.input_error_help(rental, :name).strip
+      assert_equal "<span class='help-inline'>[\"can't be blank\", \"is too short (minimum is 2 characters)\"]</span>", @helper.input_error_help(rental, :name).strip
+    end
+
+    it "should return minimum length error help" do
+      rental = Rental.create(name: 'H')
+      assert_equal "<span class='help-inline'>[\"is too short (minimum is 2 characters)\"]</span>", @helper.input_error_help(rental, :name).strip
     end
 
     it "should return empty string" do

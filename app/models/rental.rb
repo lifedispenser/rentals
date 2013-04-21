@@ -1,7 +1,7 @@
 class Rental < ActiveRecord::Base
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :contact, presence: true
+  validates :name, presence: true, :length => { :in => 2..255 }
+  validates :description, presence: true, :length => { :in => 50..255 }
+  validates :contact, presence: true, :length => { :in => 5..255 }
   
   has_many :photos, :dependent => :destroy
 

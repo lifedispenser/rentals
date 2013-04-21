@@ -6,10 +6,28 @@ describe Rental do
       @rental = Rental.new
     end
     
-    it "should fail validation" do
+    it "should fail all validations" do
       assert @rental.save == false, "Validations should fail"
       assert @rental.errors.messages[:name].empty? == false, "Name validation should fail"
       assert @rental.errors.messages[:description].empty? == false, "Description validation should fail"
+      assert @rental.errors.messages[:contact].empty? == false, "Contact validation should fail"
+    end
+
+    it "should fail description validation" do
+      @rental.description = 'Hello'
+      assert @rental.save == false, "Validations should fail"
+      assert @rental.errors.messages[:description].empty? == false, "Description validation should fail"
+    end
+
+    it "should fail name validation" do
+      @rental.name = 'H'
+      assert @rental.save == false, "Validations should fail"
+      assert @rental.errors.messages[:name].empty? == false, "Name validation should fail"
+    end
+
+    it "should fail contact validation" do
+      @rental.description = 'Hi'
+      assert @rental.save == false, "Validations should fail"
       assert @rental.errors.messages[:contact].empty? == false, "Contact validation should fail"
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130331145300) do
+ActiveRecord::Schema.define(version: 20130421162913) do
 
   create_table "photos", force: true do |t|
     t.integer  "rental_id"
@@ -42,11 +42,10 @@ ActiveRecord::Schema.define(version: 20130331145300) do
 
   create_table "rentals", force: true do |t|
     t.string   "name"
-    t.text     "description"
-    t.decimal  "bedrooms",             precision: 3, scale: 1
-    t.decimal  "bathrooms",            precision: 3, scale: 1
-    t.boolean  "pet_friendly",                                 default: false
-    t.boolean  "kid_friendly",                                 default: false
+    t.decimal  "bedrooms",            precision: 3, scale: 1
+    t.decimal  "bathrooms",           precision: 3, scale: 1
+    t.boolean  "pet_friendly",                                default: false
+    t.boolean  "kid_friendly",                                default: false
     t.integer  "rate_per_night"
     t.integer  "rate_per_week"
     t.integer  "rate_per_month"
@@ -56,7 +55,7 @@ ActiveRecord::Schema.define(version: 20130331145300) do
     t.integer  "base_rate_per_night"
     t.integer  "base_rate_per_week"
     t.integer  "base_rate_per_month"
-    t.string   "featured_description"
+    t.string   "description"
   end
 
   add_index "rentals", ["bathrooms"], name: "index_rentals_on_bathrooms", using: :btree

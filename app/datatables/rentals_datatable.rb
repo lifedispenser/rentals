@@ -22,7 +22,7 @@ private
       [
         link_to(rental.id, edit_mr_rogers_rental_path(rental)),
         link_to(rental.name, edit_mr_rogers_rental_path(rental)),
-        link_to(rental.description[0..255], edit_mr_rogers_rental_path(rental))
+        link_to(rental.description, edit_mr_rogers_rental_path(rental))
       ]
     end
   end
