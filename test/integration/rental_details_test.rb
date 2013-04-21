@@ -6,7 +6,7 @@ feature "Rental Details Feature Test" do
     @rental = FactoryGirl.create(:featured_rental)
   end
 
-  scenario "the rental details page should be accessible from the homepage" do
+  scenario "the rental details page should be accessible from the homepage details button" do
     visit root_path
 
     selector = [:css, '.span4 p a']
@@ -19,6 +19,21 @@ feature "Rental Details Feature Test" do
     selector = [:css, '.nav .active']
     page.wont_have_selector *selector
   end
+
+  scenario "the rental details page should be accessible from the homepage photo" do
+    visit root_path
+
+    selector = [:css, '.span4 a']
+    page.must_have_selector *selector
+
+    page.find(*selector).click
+
+    page.must_have_content @rental.name
+
+    selector = [:css, '.nav .active']
+    page.wont_have_selector *selector
+  end
+
 
   scenario "the rental details page must have a link back to the homepage", js: true do
     visit rental_path(@rental)
