@@ -2,10 +2,12 @@ class Photo < ActiveRecord::Base
   belongs_to :rental
   has_attached_file :asset,
     styles: {
-      thumb: '100x100>',
-      square: '200x200#',
-      medium: '300x300>',
-      featured: '310x210>'
+      thumb: '100x100#',
+      featured: '310x210#',
+      banner: ''
+    },
+    convert_options: {
+      banner: '-resize "1500x500^" -gravity center -crop "1500x500+0+0" +repage -compress JPEG2000 -quality 75',
     }
   
   validates :rental_id, presence: true
@@ -14,7 +16,8 @@ class Photo < ActiveRecord::Base
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/png", "image/gif"] },
     size: { in: 0..5000.kilobytes }
 
-  scope :featured, -> { where('featured is true') }
+  scope :featured, -> { where(featured: true) }
+  scope :banner, -> { where(banner: true) }
   
   include Rails.application.routes.url_helpers
 

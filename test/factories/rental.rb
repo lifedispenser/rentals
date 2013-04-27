@@ -18,6 +18,13 @@ FactoryGirl.define do
           FactoryGirl.create_list(:photo, evaluator.photo_count, rental: rental, featured: true)
         end
       end
+
+      factory :banner_rental do
+        after(:create) do |rental, evaluator|
+          FactoryGirl.create_list(:photo, evaluator.photo_count, rental: rental, banner: true)
+        end
+      end
+
     end
   end
 end

@@ -29,4 +29,15 @@ describe Photo do
       assert_equal Photo.featured.to_a, [@photo]
     end
   end
+  
+  context "banner scope" do
+    before do
+      FactoryGirl.create_list(:photo, 5)
+      @photo = FactoryGirl.create(:photo, banner: true)
+    end
+    
+    it "should return the banner photo" do
+      assert_equal Photo.banner.to_a, [@photo]
+    end
+  end
 end

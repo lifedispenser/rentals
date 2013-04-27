@@ -62,14 +62,6 @@ describe Rental do
     it "should return the rental with a featured photo" do
       assert_equal Rental.featured.to_a, [@rental]
     end
-
-    it "should return the featured rentals in random order" do
-      (1..100).each do |i|
-        rental = FactoryGirl.create(:rental)
-        FactoryGirl.create(:photo, rental: rental, featured: true)
-      end
-      assert_not_equal Rental.featured.to_a, Rental.featured.to_a
-    end
   end
   
   context "featured photo" do
@@ -84,4 +76,27 @@ describe Rental do
     end
   end
   
+  context "banner scope" do
+    before do
+      FactoryGirl.create_list(:rental_with_photos, 5)
+      @rental = FactoryGirl.create(:rental_with_photos)
+      @rental.photos << FactoryGirl.create(:photo, banner: true)
+    end
+    
+    it "should return the rental with a banner photo" do
+      assert_equal Rental.banner.to_a, [@rental]
+    end
+  end
+  
+  context "banner photo" do
+    before do
+      @rental = FactoryGirl.create(:rental_with_photos)
+      @banner_photo1 = FactoryGirl.create(:photo, banner: true, rental: @rental)
+      @banner_photo2 = FactoryGirl.create(:photo, banner: true, rental: @rental)
+    end
+    
+    it "should return a banner photo" do
+      assert [@banner_photo1, @banner_photo2].include? @rental.banner_photo
+    end
+  end
 end

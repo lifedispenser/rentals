@@ -8,6 +8,12 @@ feature "HomePage Feature Test" do
 
     @rental2 = FactoryGirl.create(:rental_with_photos)
     @photo2 = FactoryGirl.create(:photo, featured: true, rental: @rental2)
+
+    @rental3 = FactoryGirl.create(:rental_with_photos)
+    @photo3 = FactoryGirl.create(:photo, banner: true, rental: @rental3)
+
+    @rental4 = FactoryGirl.create(:rental_with_photos)
+    @photo4 = FactoryGirl.create(:photo, banner: true, rental: @rental4)
   end
 
   scenario "the homepage should display properly" do
@@ -21,8 +27,21 @@ feature "HomePage Feature Test" do
     selector = [:css, 'footer p', {:text => "#{Time.now.year} SurfingLangosta"}]
     page.must_have_selector *selector
 
-    page.must_have_selector '.carousel-inner .item', :count => 3
+    page.must_have_selector '.carousel-inner .item', :count => 2
     page.must_have_selector '.marketing .row .span4', :count => 2
+
+    page.must_have_selector "img[src='#{@photo3.asset.url(:banner)}']"
+    selector = [:css, '.carousel-caption h1', {:text => @rental3.name}]
+    page.must_have_selector *selector
+    selector = [:css, '.carousel-caption p', {:text => @rental3.description}]
+    page.must_have_selector *selector
+
+    page.must_have_selector "img[src='#{@photo4.asset.url(:banner)}']"
+    selector = [:css, '.carousel-caption h1', {:text => @rental4.name}]
+    page.must_have_selector *selector
+    selector = [:css, '.carousel-caption p', {:text => @rental4.description}]
+    page.must_have_selector *selector
+    
 
     page.must_have_selector "img[src='#{@photo1.asset.url(:medium)}']"
     selector = [:css, '.span4 p', {:text => @rental.description}]

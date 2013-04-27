@@ -9,7 +9,7 @@ feature "Rental Details Feature Test" do
   scenario "the rental details page should be accessible from the homepage details button" do
     visit root_path
 
-    selector = [:css, '.span4 p a']
+    selector = [:css, '.span4 p a:first-child']
     page.must_have_selector *selector
 
     page.find(*selector).click
@@ -23,7 +23,7 @@ feature "Rental Details Feature Test" do
   scenario "the rental details page should be accessible from the homepage photo" do
     visit root_path
 
-    selector = [:css, '.span4 a']
+    selector = [:css, '.span4 a:last-child']
     page.must_have_selector *selector
 
     page.find(*selector).click

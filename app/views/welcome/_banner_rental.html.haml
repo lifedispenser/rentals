@@ -1,8 +1,9 @@
 .item
-  =image_tag 'rental-test-1.jpg'
+  =image_tag banner_rental.banner_photo.asset.url(:banner)
   .container
     .carousel-caption
-      %h1 Thrifty Shack.
+      %h1 
+        =banner_rental.name
       %p.lead
-        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-      =link_to 'Learn more', '#', class: "btn btn-large btn-succes"
+        =banner_rental.description
+      =link_to 'Learn more', rental_path(banner_rental), class: "btn btn-large btn-succes"
