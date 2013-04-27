@@ -10,5 +10,6 @@ feature "Admin Dashboard Feature Test" do
   scenario "should display the admin dashboard" do
     visit mr_rogers_path
     page.must_have_content "Admin Dashboard"
+    assert page.html.include? "UA-40474084-1"
   end
 end

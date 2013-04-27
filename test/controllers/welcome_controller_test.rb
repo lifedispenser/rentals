@@ -3,12 +3,8 @@ require 'test_helper'
 describe WelcomeController do
   context "#index" do
     before :each do
-#      @featured_rental = FactoryGirl.create_list(:featured_rental, 10)
-#      @banner_rental = FactoryGirl.create_list(:banner_rental, 10)
-      (1..7).each do
-        FactoryGirl.create(:featured_rental)
-        FactoryGirl.create(:banner_rental)
-      end
+      FactoryGirl.create_list(:featured_rental, 7)
+      FactoryGirl.create_list(:banner_rental, 7)
       @rental = FactoryGirl.create :rental
     end
     

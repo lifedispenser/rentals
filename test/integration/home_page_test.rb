@@ -50,5 +50,7 @@ feature "HomePage Feature Test" do
     page.must_have_selector "img[src='#{@photo2.asset.url(:medium)}']"
     selector = [:css, '.span4 p', {:text => @rental2.description}]
     page.must_have_selector *selector
+
+    assert page.html.include? "UA-40474084-1"
   end
 end
