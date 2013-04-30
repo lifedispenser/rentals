@@ -27,7 +27,9 @@
 //= require bootstrap-collapse
 //= require bootstrap-carousel
 //= require bootstrap-typeahead
+//= require bootstrap-datepicker
 //= require turbolinks
 //= require_self
 
 //= require carousel
+//= require rental

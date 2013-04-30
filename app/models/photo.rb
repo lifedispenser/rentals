@@ -3,7 +3,8 @@ class Photo < ActiveRecord::Base
   has_attached_file :asset,
     styles: {
       thumb: '100x100#',
-      featured: '310x210#',
+      medium: '310x210#',
+      large: '600x500#',
       banner: ''
     },
     convert_options: {

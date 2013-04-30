@@ -1,13 +1,42 @@
--content_for :carousel do
-  #splashCarousel.carousel.slide
-    .carousel-inner
-      .item.active
-        =image_tag @rental.photos.first.asset.url(:medium)
+#rental-details
+  #main.container-fluid
+    .row-fluid
+      .span8
+        =link_to @rental.photos.first.asset.url(:original), target: '_blank' do
+          =image_tag @rental.photos.first.asset.url(:large), class: 'img-polaroid'
 
-        .container
-          .carousel-caption
-            %h1 
-              =@rental.name
-            %p.lead
-              =@rental.description
-            =link_to 'Learn more', '#', class: "btn btn-large btn-success"
+      .span4
+        %h1 
+          =@rental.name
+        %h4
+          ="Daily: $#{@rental.rate_per_night}"
+        -if @rental.rate_per_week.present?
+          %h4
+            ="Weekly: $#{@rental.rate_per_week}"
+        -if @rental.rate_per_month.present?
+          %h4
+            ="Monthly: $#{@rental.rate_per_month}"
+
+        #amenities.row-fluid
+          -if @rental.pet_friendly
+            .amenity.span2
+              =image_tag 'pet-friendly.png', alt: 'Pet Friendly', 'data-toggle' => 'tooltip', 'data-original-title' => 'Pet Friendly', class: 'icon'
+          -if @rental.kid_friendly
+            .amenity.span2
+              =image_tag 'kid-friendly.png', alt: 'Kid Friendly', 'data-toggle' => 'tooltip', 'data-original-title' => 'Kid Friendly', class: 'icon'
+
+        %p.lead
+          =@rental.description
+
+  =render partial: 'contact'
+      
+  #top.container-fluid
+    .row-fluid
+      -offset = 0
+      -while offset < @rental.photos.count
+        .row
+          -@rental.photos[offset..(offset + 2)].each do |photo|
+            .span4
+              =link_to photo.asset.url(:original), target: '_blank' do
+                =image_tag photo.asset.url(:medium), class: 'img-polaroid'
+          -offset += 3

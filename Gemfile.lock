@@ -137,6 +137,8 @@ GEM
     activerecord-deprecated_finders (0.0.3)
     atomic (1.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-datepicker-rails (1.0.0.5)
+      railties (>= 3.0)
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     bourne (1.1.2)
@@ -291,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   arel!
   aws-sdk!
+  bootstrap-datepicker-rails
   bootstrap-sass
   capistrano
   capybara-webkit

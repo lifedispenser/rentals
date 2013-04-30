@@ -56,4 +56,5 @@ Rentals::Application.routes.draw do
   end
 
   resources :rentals, only: [:show]
+  resources :contacts, only: [:create]
 end

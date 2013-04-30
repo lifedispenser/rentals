@@ -4,4 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout proc{ |controller| (controller.controller_path.include? 'devise') ? 'admin' : 'application' }
 
+  def flashy(obj)
+    if obj.errors.empty?
+      flash.now[:success] = 'Saved successfully'
+    else
+      flash.now[:error] = 'There was an error saving'
+    end
+  end
+
 end

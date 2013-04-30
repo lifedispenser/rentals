@@ -33,6 +33,7 @@ gem 'haml', github: 'haml/haml'
 gem 'jquery-rails', github: 'rails/jquery-rails'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-fileupload-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

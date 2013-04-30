@@ -80,6 +80,18 @@ feature 'Admin Rentals Feature Test' do
     name = 'Wonderful Vacation Rental'
     description = 'This is the best place in the world. You will love it.'
     contact = 'Mr. Smith, 222 West Street, Some City, ST, USA, 23456 888-111-2222'
+
+    raise 'NEED TO ADD THESE CHECKS TOO'
+#    bedrooms: beds,
+#    bathrooms: baths,
+#    pet_friendly: 'true',
+#    kid_friendly: 'true',
+#    rate_per_night: rpn,
+#    rate_per_week: rpw,
+#    rate_per_month: rpm,
+#    base_rate_per_night: brpn,
+#    base_rate_per_week: brpw,
+#    base_rate_per_month: brpm
     
     fill_in 'rental_name', :with => name
     fill_in 'rental_description', :with => description
