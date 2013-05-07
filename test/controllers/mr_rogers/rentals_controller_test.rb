@@ -262,8 +262,8 @@ describe MrRogers::RentalsController do
                                                   base_rate_per_month: brpm
                                                    }
         
-       assert_response :success
-       assert flash[:success].present?
+        assert_response :success
+        assert flash[:success].present?
         assert_equal Rental.count, 1
         rental = Rental.all.first
         

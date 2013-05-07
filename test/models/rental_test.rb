@@ -35,7 +35,7 @@ describe Rental do
       @rental.name = Faker::Lorem.words(3).to_s
       @rental.description = Faker::Lorem.sentences(2).to_s
       @rental.contact = Faker::Lorem.sentences(2).to_s
-      assert @rental.save == true, "Validations should pass"
+      assert @rental.save == true, "Validations should pass: #{@rental.errors.inspect}"
     end
   end
   

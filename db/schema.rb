@@ -14,13 +14,14 @@
 ActiveRecord::Schema.define(version: 20130430041017) do
 
   create_table "contacts", force: true do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "from"
-    t.string "to"
-    t.string "email"
-    t.string "phone"
-    t.string "message"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "from"
+    t.string  "to"
+    t.string  "email"
+    t.string  "phone"
+    t.string  "message"
+    t.integer "rental_id"
   end
 
   create_table "photos", force: true do |t|

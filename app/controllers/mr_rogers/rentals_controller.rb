@@ -15,7 +15,6 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
   def create
     @rental = Rental.create(post_params)
     flashy(@rental)
-#    raise @rental.errors.inspect unless @rental.errors.empty?
     @rental.errors.empty? ? (redirect_to action: :index) : (render :new)
   end
 

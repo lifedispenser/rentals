@@ -1,6 +1,3 @@
-#alert
-  %strong
-  
 #contact.container
   .container
     -if flash[:success]
@@ -15,20 +12,20 @@
       .alert.alert-info
         =flash[:notice]
     
-
-  =form_tag contacts_path do
-    .row
-      =text_field :contact, :from, 'data-behaviour' => 'datepicker', placeholder: 'From', class: 'input-small'
-      =text_field :contact, :to, 'data-behaviour' => 'datepicker', placeholder: 'To', class: 'input-small'
-    .row
-      =text_field :contact, :first_name, placeholder: 'First Name', class: 'input-xlarge'
-      =text_field :contact, :last_name, placeholder: 'Last Name', class: 'input-xlarge'
-    .row
-      =text_field :contact, :email, placeholder: 'Email', class: 'input-xlarge'
-      =text_field :contact, :phone, placeholder: 'Phone', class: 'input-xlarge'
-    .row
-      =text_area :contact, :message, placeholder: 'Message'
-      =submit_tag 'Book It', class: 'btn btn-large btn-success'
+  -unless flash[:success]
+    =form_tag contacts_path do
+      .row
+        =text_field :contact, :from, 'data-behaviour' => 'datepicker', placeholder: 'From', class: 'input-small'
+        =text_field :contact, :to, 'data-behaviour' => 'datepicker', placeholder: 'To', class: 'input-small'
+      .row
+        =text_field :contact, :first_name, placeholder: 'First Name', class: 'input-xlarge'
+        =text_field :contact, :last_name, placeholder: 'Last Name', class: 'input-xlarge'
+      .row
+        =text_field :contact, :email, placeholder: 'Email', class: 'input-xlarge'
+        =text_field :contact, :phone, placeholder: 'Phone', class: 'input-xlarge'
+      .row
+        =text_area :contact, :message, placeholder: 'Message'
+        =submit_tag 'Book It', class: 'btn btn-large btn-success'
 
 
 

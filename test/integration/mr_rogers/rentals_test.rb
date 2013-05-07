@@ -4,13 +4,11 @@ require 'test_helper'
 feature 'Admin Rentals Feature Test' do
   background do
     Capybara.reset_sessions!
-    (1..20).each { FactoryGirl.create :rental }
     @user = FactoryGirl.create :user
     login @user
   end
 
   scenario 'should display the rentals datatable', js: true do
-    Rental.destroy_all
     @rental = FactoryGirl.create :rental
     visit mr_rogers_rentals_path
     page.must_have_content 'All Rentals'
@@ -18,6 +16,7 @@ feature 'Admin Rentals Feature Test' do
   end
 
   scenario 'rentals datatable should paginate correctly', js: true do
+    (1..20).each { FactoryGirl.create :rental }
     visit mr_rogers_rentals_path
     
     page.must_have_selector '.datatable tbody tr', :count => 10
@@ -50,6 +49,8 @@ feature 'Admin Rentals Feature Test' do
     click_on 'Save'
     
     page.must_have_content 'All Rentals'
+    assert_equal 1, Rental.all.count
+
     rental = Rental.last
     assert name, rental.name
     assert description, rental.description
@@ -57,6 +58,8 @@ feature 'Admin Rentals Feature Test' do
   end
 
   scenario 'should delete a rental', js: true do
+    FactoryGirl.create :rental
+    assert_equal 1, Rental.all.count
     visit mr_rogers_rentals_path
     rental_count = Rental.all.count
     page.must_have_content 'All Rentals'
@@ -66,12 +69,14 @@ feature 'Admin Rentals Feature Test' do
     click_on 'Delete Rental'
     page.driver.browser.switch_to.alert.accept
     page.must_have_content 'All Rentals'
-    assert_not_equal rental_count, Rental.all.count
+    assert_equal 0, Rental.all.count
   end
 
   scenario 'should update a rental', js: true do
+    FactoryGirl.create :rental
     visit mr_rogers_rentals_path
     rental_count = Rental.all.count
+    assert_equal 1, rental_count
     page.must_have_content 'All Rentals'
     
     page.find('.datatable tbody tr:first-child td:first-child a').click
@@ -80,29 +85,49 @@ feature 'Admin Rentals Feature Test' do
     name = 'Wonderful Vacation Rental'
     description = 'This is the best place in the world. You will love it.'
     contact = 'Mr. Smith, 222 West Street, Some City, ST, USA, 23456 888-111-2222'
-
-    raise 'NEED TO ADD THESE CHECKS TOO'
-#    bedrooms: beds,
-#    bathrooms: baths,
-#    pet_friendly: 'true',
-#    kid_friendly: 'true',
-#    rate_per_night: rpn,
-#    rate_per_week: rpw,
-#    rate_per_month: rpm,
-#    base_rate_per_night: brpn,
-#    base_rate_per_week: brpw,
-#    base_rate_per_month: brpm
+    bedrooms = '3'
+    bathrooms = '2'
+    rate_per_night = '111'
+    rate_per_week = '2222'
+    rate_per_month = '33333'
+    base_rate_per_night = '1'
+    base_rate_per_week = '22'
+    base_rate_per_month = '333'
     
     fill_in 'rental_name', :with => name
     fill_in 'rental_description', :with => description
     fill_in 'rental_contact', :with => contact
+    fill_in 'rental_bedrooms', :with => bedrooms
+    fill_in 'rental_bathrooms', :with => bathrooms
+    check 'rental_pet_friendly'
+    check 'rental_kid_friendly'
+    
+    fill_in 'rental_rate_per_night', :with => rate_per_night
+    fill_in 'rental_rate_per_week', :with => rate_per_week
+    fill_in 'rental_rate_per_month', :with => rate_per_month
+    fill_in 'rental_base_rate_per_night', :with => base_rate_per_night
+    fill_in 'rental_base_rate_per_week', :with => base_rate_per_week
+    fill_in 'rental_base_rate_per_month', :with => base_rate_per_month
+
     click_on 'Save'
     
     page.must_have_content 'Edit Rental'
     page.must_have_content 'Saved successfully'
+    assert_equal 1, rental_count
+    
     rental = Rental.last
-    assert name, rental.name
-    assert description, rental.description
-    assert contact, rental.contact
+    assert_equal name, rental.name
+    assert_equal description, rental.description
+    assert_equal contact, rental.contact
+    assert_equal bedrooms.to_f, rental.bedrooms.to_f
+    assert_equal bathrooms.to_f, rental.bathrooms.to_f
+    assert rental.pet_friendly
+    assert rental.kid_friendly
+    assert_equal rate_per_night.to_i, rental.rate_per_night.to_i
+    assert_equal rate_per_week.to_i, rental.rate_per_week.to_i
+    assert_equal rate_per_month.to_i, rental.rate_per_month.to_i
+    assert_equal base_rate_per_night.to_i, rental.base_rate_per_night.to_i
+    assert_equal base_rate_per_week.to_i, rental.base_rate_per_week.to_i
+    assert_equal base_rate_per_month.to_i, rental.base_rate_per_month.to_i
   end
 end

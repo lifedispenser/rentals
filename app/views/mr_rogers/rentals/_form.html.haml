@@ -10,6 +10,16 @@
     .controls
       =f.text_area :description, placeholder: 'Description', class: 'input-block-level', rows: 5
       =input_error_help(@rental, :description)
+
+  .control-group{class: input_class(@rental,:bedrooms) }
+    %label.control-label{for: 'rental_bedrooms'} Bedrooms
+    .controls
+      =f.text_field :bedrooms, placeholder: 'Bedrooms', class: 'input-small'
+
+  .control-group{class: input_class(@rental,:bathrooms) }
+    %label.control-label{for: 'rental_bathrooms'} Bathrooms
+    .controls
+      =f.text_field :bathrooms, placeholder: 'Bathrooms', class: 'input-small'
       
   .control-group{class: input_class(@rental,:rate_per_night) }
     %label.control-label{for: 'rental_rate_per_night'} Customer rate per night
@@ -62,7 +72,7 @@
     %label.control-label{for: 'rental_base_rate_per_month'} Base rate per month
     .controls
       $
-      =f.text_field :base_rate_per_week, placeholder: 'Base rate per month', class: 'input-medium'
+      =f.text_field :base_rate_per_month, placeholder: 'Base rate per month', class: 'input-medium'
 
   .control-group
     %button.btn.btn-success{type: 'submit'} Save

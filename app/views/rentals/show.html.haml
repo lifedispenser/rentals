@@ -3,7 +3,7 @@
     .row-fluid
       .span8
         =link_to @rental.photos.first.asset.url(:original), target: '_blank' do
-          =image_tag @rental.photos.banner.first.asset.url(:large), class: 'img-polaroid'
+          =image_tag @rental.photos.featured.first.asset.url(:large), class: 'img-polaroid'
 
       .span4
         %h1 
@@ -27,6 +27,10 @@
 
         %p.lead
           =@rental.description
+          
+        %p
+          Bedrooms Bathrooms
+        
 
   =render partial: 'contact'
       

@@ -93,4 +93,17 @@ Rentals::Application.configure do
       :secret_access_key => 'iSqnnUcSpB/si7VqHTW7Dam69ukVRtj4aT52A7QB'
     }
   }
+  
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "laura@surfinglangosta.com",
+    :password => "OY6wccCfMCXYNlrqfzThLf",
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default(from: "donotreply@surfinglangosta.com")
+  config.action_mailer.default_url_options = { :host => "surfinglangosta.com" }
 end

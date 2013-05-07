@@ -4,6 +4,7 @@ describe RentalsController do
   context "#show" do
     before :each do
       @rental = FactoryGirl.create :rental_with_photos
+      FactoryGirl.create :photo, featured: true, rental: @rental
     end
     
     it "should show the rental details" do
