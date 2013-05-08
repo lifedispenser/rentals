@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130430041017) do
+ActiveRecord::Schema.define(version: 20130507234348) do
 
   create_table "contacts", force: true do |t|
     t.string  "first_name"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20130430041017) do
 
   create_table "rentals", force: true do |t|
     t.string   "name"
-    t.decimal  "bedrooms",            precision: 3, scale: 1
-    t.decimal  "bathrooms",           precision: 3, scale: 1
-    t.boolean  "pet_friendly",                                default: false
-    t.boolean  "kid_friendly",                                default: false
+    t.integer  "bedrooms"
+    t.integer  "bathrooms"
+    t.boolean  "pet_friendly",        default: false
+    t.boolean  "kid_friendly",        default: false
     t.integer  "rate_per_night"
     t.integer  "rate_per_week"
     t.integer  "rate_per_month"

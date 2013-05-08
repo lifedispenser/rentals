@@ -50,6 +50,8 @@ gem 'aws-sdk', github: 'aws/aws-sdk-ruby'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'airbrake'
+
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'

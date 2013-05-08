@@ -101,6 +101,10 @@ namespace :deploy do
     start
   end
  
+  task :reprocess_photos, :roles => :app, :except => { :no_release => true } do
+    run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} paperclip:refresh:thumbnails CLASS=Photo}
+  end
+ 
   task :set_rvm_version, :roles => :app, :except => { :no_release => true } do
     run "source /etc/profile.d/rvm.sh && rvm use #{rvm_ruby_string} --default"
   end
@@ -142,3 +146,5 @@ end
 def remote_file_exists?(full_path)
   'true' ==  capture("if [ -e #{full_path} ]; then echo 'true'; fi").strip
 end
+        require './config/boot'
+        require 'airbrake/capistrano'

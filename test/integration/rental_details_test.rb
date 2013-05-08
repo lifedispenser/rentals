@@ -41,11 +41,37 @@ feature "Rental Details Feature Test" do
     selector = [:css, '.nav .active']
     page.wont_have_selector *selector
     
-    selector = [:css, '.nav li', {:text => 'Home'}]
+    selector = [:css, '.nav li', {text: 'Home'}]
     page.must_have_selector *selector
     page.find(*selector).click
 
-    selector = [:css, '.nav .active a', {:text => 'Home'}]
+    selector = [:css, '.nav a', {text: 'Home'}]
     page.must_have_selector *selector
   end
+  
+  scenario "the rental details page must display rental details", js: true do
+    visit rental_path(@rental)
+
+    selector = [:css, 'p', {text: @rental.bedrooms.to_s}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'p', {text: @rental.bathrooms.to_s}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'h1', {text: @rental.name}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'h4', {text: @rental.rate_per_night}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'h4', {text: @rental.rate_per_week}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'h4', {text: @rental.rate_per_month}]
+    page.must_have_selector *selector
+
+    selector = [:css, 'p', {text: @rental.description}]
+    page.must_have_selector *selector
+  end
+  
 end
