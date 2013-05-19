@@ -1,0 +1,9 @@
+.span4
+  =link_to rental_path(rental) do
+    =image_tag rental.featured_photo.asset.url(:medium), class: 'img-polaroid'
+  %h2
+    =rental.name
+  %p
+    =rental.description
+  %p
+    =link_to 'View details &raquo;'.html_safe, rental_path(rental), class: 'btn btn-info'

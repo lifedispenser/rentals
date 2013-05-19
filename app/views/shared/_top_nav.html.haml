@@ -12,13 +12,11 @@
           %ul.nav
             %li{class: nav_class('welcome')}
               =link_to 'Home', root_path
-            %li{class: nav_class('tamarindo')}
-              =link_to 'Tamarindo', '#'
+            %li{class: nav_class('rentals')}
+              =link_to 'Browse', rentals_path
             %li{class: nav_class('pet_friendly')}
-              =link_to 'Pet Friendly', '#'
+              =link_to 'Pet Friendly', rentals_path(pet_friendly: true)
+            %li{class: nav_class('kid_friendly')}
+              =link_to 'Family Friendly', rentals_path(kid_friendly: true)
             %li{class: nav_class('long_term')}
               =link_to 'Long Term', '#'
-            %li{class: nav_class('about')}
-              =link_to 'About', '#'
-            %li{class: nav_class('contact')}
-              =link_to 'Contact', '#'

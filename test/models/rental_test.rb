@@ -99,4 +99,57 @@ describe Rental do
       assert [@banner_photo1, @banner_photo2].include? @rental.banner_photo
     end
   end
+  
+  context "pet_friendly scope" do
+    before do
+      @rental = FactoryGirl.create(:rental, pet_friendly: true)
+      FactoryGirl.create_list(:rental, 3, pet_friendly: false)
+    end
+    
+    it "should return the pet friendly rentals" do
+      assert_equal [@rental], Rental.pet_friendly.to_a
+    end
+  end
+
+  context "kid_friendly scope" do
+    before do
+      @rental = FactoryGirl.create(:rental, kid_friendly: true)
+      FactoryGirl.create_list(:rental, 3, kid_friendly: false)
+    end
+    
+    it "should return the kid friendly rentals" do
+      assert_equal [@rental], Rental.kid_friendly.load
+    end
+  end
+  
+  context "publish!" do
+    before do
+      @rental = FactoryGirl.create(:rental_with_photos, published: false)
+      @rental2 = FactoryGirl.create(:rental, published: false)
+    end
+    
+    it "should publish the rental" do
+      @rental.publish!
+      @rental.reload
+      assert @rental.published
+    end
+
+    it "should not publish the rental without any photos" do
+      @rental2.publish!
+      @rental2.reload
+      refute @rental2.published
+    end
+  end
+
+  context "unpublish!" do
+    before do
+      @rental = FactoryGirl.create(:rental_with_photos, published: true)
+    end
+    
+    it "should un-publish the rental" do
+      @rental.unpublish!
+      @rental.reload
+      refute @rental.published
+    end
+  end
 end

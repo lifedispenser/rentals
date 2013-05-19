@@ -1,7 +1,6 @@
 require 'test_helper'
 
-describe MrRogers::RentalsController do
-  
+describe MrRogers::RentalsController do  
   context "#index" do
     context "no authentication" do
       it "should redirect to signin" do
@@ -311,4 +310,62 @@ describe MrRogers::RentalsController do
       end
     end
   end
+
+  context "#publish" do
+    before :each do
+      @rental = FactoryGirl.create :rental
+    end
+
+    context "no authentication" do
+      it "should redirect to signin" do
+        post :publish, rental_id: @rental.id
+        assert_redirected_to new_user_session_path
+      end
+    end
+    
+    context "with authentication" do
+      before :each do
+        @user = FactoryGirl.create :user
+        sign_in @user
+      end
+
+      it "should publish the rental" do
+        post :publish, rental_id: @rental.id
+
+        assert_response :success
+        assert !flash[:success].empty?
+        assert @rental.reload.published
+      end
+    end
+  end
+
+  context "#unpublish" do
+    before :each do
+      @rental = FactoryGirl.create :rental, published: true
+    end
+
+    context "no authentication" do
+      it "should redirect to signin" do
+        post :unpublish, rental_id: @rental.id
+        assert_redirected_to new_user_session_path
+      end
+    end
+    
+    context "with authentication" do
+      before :each do
+        @user = FactoryGirl.create :user
+        sign_in @user
+      end
+
+      it "should unpublish the rental" do
+        post :unpublish, rental_id: @rental.id
+
+        assert_response :success
+        assert !flash[:success].empty?
+        refute @rental.reload.published
+      end
+    end
+  end
+
+
 end

@@ -40,4 +40,15 @@ describe Photo do
       assert_equal Photo.banner.to_a, [@photo]
     end
   end
+  
+  context "paperclip post process" do
+    before do
+      @photo = FactoryGirl.create(:photo)
+    end
+    
+    it "should update rental published" do
+      assert @photo.rental.published
+    end
+  end
+  
 end

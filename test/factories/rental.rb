@@ -3,6 +3,7 @@ FactoryGirl.define do
     name Faker::Lorem.words(3).join(' ').to_s
     description Faker::Lorem.sentences(3).join(' ').to_s
     contact Faker::Lorem.sentences(3).join(' ').to_s
+    published true
     
     factory :rental_with_photos do
       ignore do

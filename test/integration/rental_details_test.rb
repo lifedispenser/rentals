@@ -16,8 +16,8 @@ feature "Rental Details Feature Test" do
 
     page.must_have_content @rental.name
 
-    selector = [:css, '.nav .active']
-    page.wont_have_selector *selector
+    selector = [:css, '.nav .active a', {:text => 'Browse'}]
+    page.must_have_selector *selector
   end
 
   scenario "the rental details page should be accessible from the homepage photo" do
@@ -30,16 +30,16 @@ feature "Rental Details Feature Test" do
 
     page.must_have_content @rental.name
 
-    selector = [:css, '.nav .active']
-    page.wont_have_selector *selector
+    selector = [:css, '.nav .active a', {:text => 'Browse'}]
+    page.must_have_selector *selector
   end
 
 
   scenario "the rental details page must have a link back to the homepage", js: true do
     visit rental_path(@rental)
 
-    selector = [:css, '.nav .active']
-    page.wont_have_selector *selector
+    selector = [:css, '.nav .active a', {:text => 'Browse'}]
+    page.must_have_selector *selector
     
     selector = [:css, '.nav li', {text: 'Home'}]
     page.must_have_selector *selector
@@ -74,4 +74,9 @@ feature "Rental Details Feature Test" do
     page.must_have_selector *selector
   end
   
+  scenario "the rental details page should 404 if rental isn't published" do
+    @rental.unpublish!
+    visit rental_path(@rental)
+    assert_equal 404, page.status_code
+  end
 end

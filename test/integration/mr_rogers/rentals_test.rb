@@ -130,4 +130,35 @@ feature 'Admin Rentals Feature Test' do
     assert_equal base_rate_per_week.to_i, rental.base_rate_per_week.to_i
     assert_equal base_rate_per_month.to_i, rental.base_rate_per_month.to_i
   end
+  
+  scenario 'should publish a rental', js: true do
+    FactoryGirl.create :rental_with_photos, published: false
+    assert_equal 1, Rental.all.count
+    visit mr_rogers_rentals_path
+    rental_count = Rental.all.count
+    page.must_have_content 'All Rentals'
+    
+    page.find('.datatable tbody tr:first-child td:first-child a').click
+    page.must_have_content 'Edit Rental'
+    page.wont_have_content 'Published'
+    click_on 'Publish'
+    page.driver.browser.switch_to.alert.accept
+    page.must_have_content 'Published'
+    assert Rental.last.published
+  end
+  
+  scenario 'should un-publish a rental', js: true do
+    FactoryGirl.create :rental_with_photos
+    assert_equal 1, Rental.all.count
+    visit mr_rogers_rentals_path
+    rental_count = Rental.all.count
+    page.must_have_content 'All Rentals'
+    
+    page.find('.datatable tbody tr:first-child td:first-child a').click
+    page.must_have_content 'Edit Rental'
+    page.must_have_content 'Published'
+    click_on 'Un-publish'
+    page.driver.browser.switch_to.alert.accept
+    refute Rental.last.published, "Rental should have been unpublished"
+  end
 end

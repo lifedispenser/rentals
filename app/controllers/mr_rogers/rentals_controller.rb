@@ -28,6 +28,21 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
     flashy(@rental)
     render :edit
   end
+
+  def publish
+    @rental = Rental.find(params[:rental_id])
+    @rental.publish!
+    flashy(@rental)
+    render :edit
+  end
+
+  def unpublish
+    @rental = Rental.find(params[:rental_id])
+    @rental.unpublish!
+    flashy(@rental)
+    render :edit
+  end
+
   
   def destroy
     Rental.find(params[:id]).destroy
@@ -37,6 +52,6 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
 
   private
     def post_params
-       params.require(:rental).permit(:name, :description, :pet_friendly, :kid_friendly, :bedrooms, :bathrooms, :rate_per_night, :rate_per_week, :rate_per_month, :contact, :base_rate_per_night, :base_rate_per_month, :base_rate_per_week)
+       params.require(:rental).permit(:name, :description, :pet_friendly, :kid_friendly, :bedrooms, :bathrooms, :rate_per_night, :rate_per_week, :rate_per_month, :contact, :base_rate_per_night, :base_rate_per_month, :base_rate_per_week, :published)
     end
 end

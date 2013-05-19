@@ -51,10 +51,13 @@ Rentals::Application.routes.draw do
   get 'mr_rogers' => 'mr_rogers/dashboard#index'
   
   namespace :mr_rogers do
-    resources :rentals
+    resources :rentals do
+      post 'publish'
+      post 'unpublish'
+    end
     resources :photos, except: [:edit]
   end
 
-  resources :rentals, only: [:show]
+  resources :rentals, only: [:show, :index]
   resources :contacts, only: [:create]
 end

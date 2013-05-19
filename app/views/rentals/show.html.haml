@@ -2,8 +2,8 @@
   #main.container-fluid
     .row-fluid
       .span8
-        =link_to @rental.photos.first.asset.url(:original), target: '_blank' do
-          =image_tag @rental.photos.featured.first.asset.url(:large), class: 'img-polaroid'
+        =link_to @rental.featured_photo.asset.url(:original), target: '_blank' do
+          =image_tag @rental.featured_photo.asset.url(:large), class: 'img-polaroid'
 
       .span4
         %h1 

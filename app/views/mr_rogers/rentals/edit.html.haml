@@ -1,5 +1,9 @@
 %h1 Edit Rental
 
+-if @rental.published?
+  .alert.alert-info
+    %h2 Published
+  
 %ul.thumbnails
   -@rental.photos.each do |photo|
     %li.span2.text-center
@@ -19,5 +23,13 @@
 
 
 =render partial: 'form'
+
+-if @rental.published?
+  =link_to 'Un-publish', mr_rogers_rental_unpublish_path(@rental), method: :POST, class: 'btn', data: { confirm: 'This will hide the rental from the public website. Are you sure you want to un-publish?' }
+-else
+  =link_to 'Publish', mr_rogers_rental_publish_path(@rental), method: :POST, class: 'btn btn-success', data: { confirm: 'This will make the rental show up on the public website. Are you sure you want to publish?' } 
+
+
+
 
 =link_to 'Delete Rental', mr_rogers_rental_path(@rental), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' unless @rental.id.nil?
