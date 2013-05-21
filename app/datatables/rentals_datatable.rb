@@ -1,6 +1,7 @@
 class RentalsDatatable
-  delegate :params, :h, :link_to, :number_to_currency, to: :@view
+  delegate :params, :h, :link_to, :image_tag, :number_to_currency, to: :@view
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::AssetTagHelper
 
   def initialize(view)
     @view = view
@@ -22,7 +23,9 @@ private
       [
         link_to(rental.id, edit_mr_rogers_rental_path(rental)),
         link_to(rental.name, edit_mr_rogers_rental_path(rental)),
-        link_to(rental.description, edit_mr_rogers_rental_path(rental))
+        link_to(rental.description, edit_mr_rogers_rental_path(rental)),
+        rental.published ? 'Published' : '',
+        (rental.featured_photo == '') ? 'No Photo' : image_tag(rental.featured_photo.asset.url(:thumb), class: 'img-polaroid')
       ]
     end
   end

@@ -32,14 +32,22 @@ class MrRogers::RentalsController < MrRogers::ApplicationController
   def publish
     @rental = Rental.find(params[:rental_id])
     @rental.publish!
-    flashy(@rental)
+    if @rental.published?
+      flash[:success] = 'Published Successfully'
+    else
+      flash[:error] = 'Could not publish the rental. Check your data and try again.'
+    end
     render :edit
   end
 
   def unpublish
     @rental = Rental.find(params[:rental_id])
     @rental.unpublish!
-    flashy(@rental)
+    if @rental.published?
+      flash[:error] = 'Could not un-publish the rental for an unknown reason.'
+    else
+      flash[:success] = 'Un-Published Successfully'
+    end
     render :edit
   end
 

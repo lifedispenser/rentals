@@ -51,11 +51,14 @@ gem 'aws-sdk', github: 'aws/aws-sdk-ruby'
 gem 'unicorn'
 
 gem 'airbrake'
+gem "resque"
+gem 'delayed_paperclip'
 
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
+  gem 'guard-minitest'
 end
 
 # To use debugger

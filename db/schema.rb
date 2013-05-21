@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508142558) do
+ActiveRecord::Schema.define(version: 20130521043900) do
 
   create_table "contacts", force: true do |t|
     t.string  "first_name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130508142558) do
     t.string   "asset_fingerprint"
     t.boolean  "banner",             default: false
     t.boolean  "featured",           default: false
+    t.boolean  "asset_processing"
   end
 
   add_index "photos", ["banner"], name: "index_photos_on_banner", using: :btree

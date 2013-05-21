@@ -10,6 +10,7 @@ class Photo < ActiveRecord::Base
     convert_options: {
       banner: '-resize "1500x500^" -gravity center -crop "1500x500+0+0" +repage -compress JPEG2000 -quality 75',
     }
+  process_in_background :asset, processing_image_url: "/assets/missing.jpg"
   
   validates :rental_id, presence: true
 

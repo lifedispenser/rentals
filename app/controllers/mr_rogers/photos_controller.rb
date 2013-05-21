@@ -22,10 +22,14 @@ class MrRogers::PhotosController < MrRogers::ApplicationController
 
   def create
     @photo = Photo.new(post_params)
-    if @photo.save
-      render json: {files: [@photo.to_jq_photo]}, status: :created, location: [:mr_rogers, @photo]
-    else
-      render json: @photo.errors, status: :unprocessable_entity
+    begin
+      if @photo.save
+        render json: {files: [@photo.to_jq_photo]}, status: :created, location: [:mr_rogers, @photo]
+      else
+        render json: @photo.errors, status: :unprocessable_entity
+      end
+    rescue => e
+      render json: {"error" => e}, status: :unprocessable_entity
     end
   end
 

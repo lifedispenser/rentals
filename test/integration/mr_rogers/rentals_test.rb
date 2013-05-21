@@ -13,6 +13,7 @@ feature 'Admin Rentals Feature Test' do
     visit mr_rogers_rentals_path
     page.must_have_content 'All Rentals'
     page.must_have_content @rental.description
+    assert false, "Need to test to make sure the other attributes show up in the datatable"
   end
 
   scenario 'rentals datatable should paginate correctly', js: true do
@@ -145,10 +146,10 @@ feature 'Admin Rentals Feature Test' do
     page.driver.browser.switch_to.alert.accept
     page.must_have_content 'Published'
     assert Rental.last.published
-  end
+  end 
   
   scenario 'should un-publish a rental', js: true do
-    FactoryGirl.create :rental_with_photos
+    @rental = FactoryGirl.create :rental_with_photos
     assert_equal 1, Rental.all.count
     visit mr_rogers_rentals_path
     rental_count = Rental.all.count
@@ -159,6 +160,8 @@ feature 'Admin Rentals Feature Test' do
     page.must_have_content 'Published'
     click_on 'Un-publish'
     page.driver.browser.switch_to.alert.accept
-    refute Rental.last.published, "Rental should have been unpublished"
+    page.must_have_content 'Un-Published Successfully'
+    @rental.reload
+    refute @rental.published, "Rental should have been unpublished"
   end
 end

@@ -7,9 +7,6 @@ $ ->
   $("a[data-remote].btn-danger").on "ajax:beforeSend", (xhr) ->
     $(this).closest('li').fadeOut()
 
-  $("a[data-remote].btn-danger").on "ajax:success", (e, data, status, xhr) ->
-    alert "Deleted."
-    
   $('#uploadPhotosModal').on "hidden", () ->
     alert('Refresh photo list')
 

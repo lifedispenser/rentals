@@ -47,7 +47,7 @@ describe Photo do
     end
     
     it "should update rental published" do
-      assert @photo.rental.published
+      assert false, "Need to test to make sure the processing is in the queue"
     end
   end
   
