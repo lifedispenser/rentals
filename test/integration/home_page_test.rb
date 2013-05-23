@@ -18,6 +18,7 @@ feature "HomePage Feature Test" do
 
   scenario "the homepage should display properly" do
     visit root_path
+
     page.must_have_content "Surfing Langosta"
     page.wont_have_content "Admin Dashboard"
 
@@ -30,24 +31,24 @@ feature "HomePage Feature Test" do
     page.must_have_selector '.carousel-inner .item', :count => 2
     page.must_have_selector '.marketing .row .span4', :count => 2
 
-    page.must_have_selector "img[src='#{@photo3.asset.url(:banner)}']"
+    page.must_have_selector "img[alt='rental photo #{@photo3.id}']"
     selector = [:css, '.carousel-caption h1', {:text => @rental3.name}]
     page.must_have_selector *selector
     selector = [:css, '.carousel-caption p', {:text => @rental3.description}]
     page.must_have_selector *selector
 
-    page.must_have_selector "img[src='#{@photo4.asset.url(:banner)}']"
+    page.must_have_selector "img[alt='rental photo #{@photo4.id}']"
     selector = [:css, '.carousel-caption h1', {:text => @rental4.name}]
     page.must_have_selector *selector
     selector = [:css, '.carousel-caption p', {:text => @rental4.description}]
     page.must_have_selector *selector
     
 
-    page.must_have_selector "img[src='#{@photo1.asset.url(:medium)}']"
+    page.must_have_selector "img[alt='rental photo #{@photo1.id}']"
     selector = [:css, '.span4 p', {:text => @rental.description}]
     page.must_have_selector *selector
 
-    page.must_have_selector "img[src='#{@photo2.asset.url(:medium)}']"
+    page.must_have_selector "img[alt='rental photo #{@photo2.id}']"
     selector = [:css, '.span4 p', {:text => @rental2.description}]
     page.must_have_selector *selector
 

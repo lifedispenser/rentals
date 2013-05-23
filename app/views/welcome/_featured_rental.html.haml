@@ -1,6 +1,6 @@
 .span4
   =link_to rental_path(featured_rental) do
-    =image_tag featured_rental.featured_photo.asset.url(:medium), class: 'img-polaroid'
+    =image_tag featured_rental.featured_photo.asset.url(:medium), class: 'img-polaroid', alt: "rental photo #{featured_rental.banner_photo.id}"
   %h2
     =featured_rental.name
   %p

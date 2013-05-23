@@ -1,7 +1,8 @@
-.container.marketing
-  -offset = 0
-  -while offset < @rentals.count
-    .row
-      -@rentals[offset..(offset + 2)].each do |rental|
-        =render partial: 'rental', object: rental
-      -offset += 3
+#rentals
+  #main.container
+    -offset = 0
+    -while offset < @rentals.count
+      .row
+        -@rentals[offset..(offset + 2)].each do |rental|
+          =render partial: 'rental', object: rental
+        -offset += 3

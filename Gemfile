@@ -52,7 +52,7 @@ gem 'unicorn'
 
 gem 'airbrake'
 gem "resque"
-gem 'delayed_paperclip'
+gem 'delayed_paperclip', github: 'onomojo/delayed_paperclip'
 
 # Deploy with Capistrano
 group :development do
@@ -65,6 +65,7 @@ end
 # gem 'debugger'
 
 group :test do
+  gem 'resque_spec'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'minitest-rails'
