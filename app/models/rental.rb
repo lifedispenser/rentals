@@ -9,6 +9,7 @@ class Rental < ActiveRecord::Base
   scope :banner, -> { includes(:photos).where('photos.banner is true').references(:photos) }
   scope :pet_friendly, -> { where(pet_friendly: true) }
   scope :kid_friendly, -> { where(kid_friendly: true) }
+  scope :long_term, -> { where(long_term: true) }
   scope :published, -> { where(published: true) }
 
   def featured_photo

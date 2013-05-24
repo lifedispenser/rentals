@@ -6,16 +6,21 @@ require "minitest/rails/shoulda"
 require "minitest/rails/capybara"
 require "paperclip/matchers"
 
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
+
 Capybara.register_driver :chrome do |app|
 # The following doesn't work. it still creates the log file
 #  Capybara::Selenium::Driver.new(app, :browser => :chrome, args: %w[--ignore-certificate-errors --disable-popup-blocking --disable-translate --silent --disable-logging])
-
  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-#Selenium::WebDriver::Firefox::Binary.path = "/Applications/FirefoxAurora.app/Contents/MacOS/firefox"
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+end
 
-Capybara.javascript_driver = :chrome
+#Capybara.javascript_driver = :chrome
 #Capybara.javascript_driver = :webkit
 #Capybara.javascript_driver = :selenium
 

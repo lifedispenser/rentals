@@ -49,6 +49,10 @@
         %label.checkbox{for: 'rental_kid_friendly'}
           =f.check_box :kid_friendly
           Kid Friendly
+      .span2{class: input_class(@rental,:long_term) }
+        %label.checkbox{for: 'rental_long_term'}
+          =f.check_box :long_term
+          Long Term
 
   .control-group{class: input_class(@rental,:contact) }
     %label.control-label{for: 'rental_contact'} Owner/Manager Contact Information

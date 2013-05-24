@@ -128,6 +128,7 @@ describe MrRogers::RentalsController do
                                 bathrooms: baths,
                                 pet_friendly: 'true',
                                 kid_friendly: 'true',
+                                long_term: 'true',
                                 rate_per_night: rpn,
                                 rate_per_week: rpw,
                                 rate_per_month: rpm,
@@ -146,6 +147,7 @@ describe MrRogers::RentalsController do
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true
         assert_equal rental.kid_friendly, true
+        assert_equal rental.long_term, true
         assert_equal rental.bedrooms.to_s, beds
         assert_equal rental.bathrooms.to_s, baths
         assert_equal rental.rate_per_night.to_s, rpn
@@ -253,6 +255,7 @@ describe MrRogers::RentalsController do
                                                   bathrooms: baths,
                                                   pet_friendly: 'true',
                                                   kid_friendly: 'true',
+                                                  long_term: 'true',
                                                   rate_per_night: rpn,
                                                   rate_per_week: rpw,
                                                   rate_per_month: rpm,
@@ -271,6 +274,7 @@ describe MrRogers::RentalsController do
         assert_equal rental.contact, contact
         assert_equal rental.pet_friendly, true
         assert_equal rental.kid_friendly, true
+        assert_equal rental.long_term, true
         assert_equal rental.bedrooms.to_s, beds
         assert_equal rental.bathrooms.to_s, baths
         assert_equal rental.rate_per_night.to_s, rpn

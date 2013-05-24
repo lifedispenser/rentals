@@ -77,4 +77,5 @@ group :test do
   gem 'capybara_minitest_spec'
   gem 'capybara-webkit'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'poltergeist'
 end

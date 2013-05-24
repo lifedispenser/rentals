@@ -122,6 +122,17 @@ describe Rental do
     end
   end
   
+  context "long_term scope" do
+    before do
+      @rental = FactoryGirl.create(:rental, long_term: true)
+      FactoryGirl.create_list(:rental, 3, long_term: false)
+    end
+    
+    it "should return the long term rentals" do
+      assert_equal [@rental], Rental.long_term.to_a
+    end
+  end
+  
   context "publish!" do
     before do
       @rental = FactoryGirl.create(:rental_with_photos, published: false)

@@ -55,6 +55,21 @@ describe RentalsController do
       end
     end
 
+    context "long term" do
+      before(:each) do
+        @rental = FactoryGirl.create(:rental_with_photos, long_term: true)
+        @rental2 = FactoryGirl.create(:rental_with_photos, long_term: true, published: false)
+        FactoryGirl.create_list(:rental_with_photos, 2, long_term: false)
+      end
+      
+      it "should assign only kid friendly rentals" do
+        get :index, long_term: true
+        assert_response :success
+        assert assigns(:rentals)
+        assert_equal [@rental], assigns(:rentals)
+      end
+    end
+
     context "no filter" do
       before(:each) do
         FactoryGirl.create_list(:rental_with_photos, 2, kid_friendly: false)

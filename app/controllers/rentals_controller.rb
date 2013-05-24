@@ -5,6 +5,8 @@ class RentalsController < ApplicationController
       @rentals = Rental.published.pet_friendly
     elsif params[:kid_friendly]
       @rentals = Rental.published.kid_friendly
+    elsif params[:long_term]
+      @rentals = Rental.published.long_term
     else
       @rentals = Rental.published
     end

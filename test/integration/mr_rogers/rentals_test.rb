@@ -9,11 +9,13 @@ feature 'Admin Rentals Feature Test' do
   end
 
   scenario 'should display the rentals datatable', js: true do
-    @rental = FactoryGirl.create :rental
+    @rental = FactoryGirl.create :rental_with_photos
     visit mr_rogers_rentals_path
     page.must_have_content 'All Rentals'
+    page.must_have_content @rental.name
     page.must_have_content @rental.description
-    assert false, "Need to test to make sure the other attributes show up in the datatable"
+    page.must_have_content 'Published'
+    page.must_have_selector "img[alt='rental photo #{@rental.photos.first.id}']"
   end
 
   scenario 'rentals datatable should paginate correctly', js: true do
@@ -68,7 +70,8 @@ feature 'Admin Rentals Feature Test' do
     page.find('.datatable tbody tr:first-child td:first-child a').click
     page.must_have_content 'Edit Rental'
     click_on 'Delete Rental'
-    page.driver.browser.switch_to.alert.accept
+    page.evaluate_script("window.confirm()")
+    
     page.must_have_content 'All Rentals'
     assert_equal 0, Rental.all.count
   end
@@ -143,7 +146,7 @@ feature 'Admin Rentals Feature Test' do
     page.must_have_content 'Edit Rental'
     page.wont_have_content 'Published'
     click_on 'Publish'
-    page.driver.browser.switch_to.alert.accept
+    page.evaluate_script("window.confirm()")
     page.must_have_content 'Published'
     assert Rental.last.published
   end 
@@ -159,7 +162,7 @@ feature 'Admin Rentals Feature Test' do
     page.must_have_content 'Edit Rental'
     page.must_have_content 'Published'
     click_on 'Un-publish'
-    page.driver.browser.switch_to.alert.accept
+    page.evaluate_script("window.confirm()")
     page.must_have_content 'Un-Published Successfully'
     @rental.reload
     refute @rental.published, "Rental should have been unpublished"

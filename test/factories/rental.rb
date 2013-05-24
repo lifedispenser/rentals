@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :rental do
-    name Faker::Lorem.words(3).join(' ').to_s
-    description Faker::Lorem.sentences(5).join(' ').to_s
-    contact Faker::Lorem.sentences(3).join(' ').to_s
+    name Faker::Lorem.words(3).join(' ').to_s[0..255]
+    description Faker::Lorem.sentences(5).join(' ').to_s[0..255]
+    contact Faker::Lorem.sentences(3).join(' ').to_s[0..255]
     published true
     
     factory :rental_with_photos do

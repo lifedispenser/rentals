@@ -25,7 +25,7 @@ private
         link_to(rental.name, edit_mr_rogers_rental_path(rental)),
         link_to(rental.description, edit_mr_rogers_rental_path(rental)),
         rental.published ? 'Published' : '',
-        (rental.featured_photo == '') ? 'No Photo' : image_tag(rental.featured_photo.asset.url(:thumb), class: 'img-polaroid')
+        (rental.featured_photo == '') ? 'No Photo' : image_tag(rental.featured_photo.asset.url(:thumb), class: 'img-polaroid', alt: "rental photo #{rental.featured_photo.id}")
       ]
     end
   end

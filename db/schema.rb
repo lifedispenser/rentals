@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130521043900) do
+ActiveRecord::Schema.define(version: 20130524044259) do
 
   create_table "contacts", force: true do |t|
     t.string  "first_name"
@@ -69,11 +69,13 @@ ActiveRecord::Schema.define(version: 20130521043900) do
     t.integer  "base_rate_per_month"
     t.string   "description"
     t.boolean  "published",           default: false
+    t.boolean  "long_term",           default: false
   end
 
   add_index "rentals", ["bathrooms"], name: "index_rentals_on_bathrooms", using: :btree
   add_index "rentals", ["bedrooms"], name: "index_rentals_on_bedrooms", using: :btree
   add_index "rentals", ["kid_friendly"], name: "index_rentals_on_kid_friendly", using: :btree
+  add_index "rentals", ["long_term"], name: "index_rentals_on_long_term", using: :btree
   add_index "rentals", ["pet_friendly"], name: "index_rentals_on_pet_friendly", using: :btree
   add_index "rentals", ["published"], name: "index_rentals_on_published", using: :btree
   add_index "rentals", ["rate_per_month"], name: "index_rentals_on_rate_per_month", using: :btree

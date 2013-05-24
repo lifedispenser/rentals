@@ -21,6 +21,13 @@ GIT
       tilt
 
 GIT
+  remote: git://github.com/onomojo/delayed_paperclip.git
+  revision: d0a279079ee50f49d24f4249377e0541988cbc05
+  specs:
+    delayed_paperclip (2.5.1.0)
+      paperclip (>= 3.3.0)
+
+GIT
   remote: git://github.com/onomojo/sprockets-rails.git
   revision: 707db5c9990d68ab9a691de13bf5ab2a62b24015
   specs:
@@ -131,12 +138,6 @@ GIT
       cocaine (~> 0.5.0)
       mime-types
 
-PATH
-  remote: ../delayed_paperclip
-  specs:
-    delayed_paperclip (2.5.1.0)
-      paperclip (>= 3.3.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,6 +187,7 @@ GEM
     coffee-script-source (1.6.2)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -195,6 +197,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     ffi (1.6.0)
     formatador (0.2.4)
     guard (1.8.0)
@@ -207,6 +211,7 @@ GEM
       guard (>= 0.4)
     highline (1.6.16)
     hike (1.2.1)
+    http_parser.rb (0.5.3)
     i18n (0.6.4)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
@@ -263,6 +268,10 @@ GEM
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
     pg (0.15.0)
+    poltergeist (1.1.2)
+      capybara (~> 2.0.1)
+      faye-websocket (~> 0.4.4)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -385,6 +394,7 @@ DEPENDENCIES
   minitest-rg
   paperclip!
   pg
+  poltergeist
   rails!
   resque
   resque_spec
