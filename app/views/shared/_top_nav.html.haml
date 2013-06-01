@@ -10,13 +10,13 @@
 
         .nav-collapse.collapse
           %ul.nav
-            %li{class: nav_class('welcome')}
+            %li{class: nav_class(root_path)}
               =link_to 'Home', root_path
-            %li{class: nav_class('rentals')}
+            %li{class: nav_class(rentals_path)}
               =link_to 'Browse', rentals_path
-            %li{class: nav_class('pet_friendly')}
-              =link_to 'Pet Friendly', rentals_path(pet_friendly: true)
-            %li{class: nav_class('kid_friendly')}
-              =link_to 'Family Friendly', rentals_path(kid_friendly: true)
-            %li{class: nav_class('long_term')}
-              =link_to 'Long Term', rentals_path(long_term: true)
+            %li{class: nav_class(pet_friendly_rentals_path)}
+              =link_to 'Pet Friendly', pet_friendly_rentals_path
+            %li{class: nav_class(kid_friendly_rentals_path)}
+              =link_to 'Family Friendly', kid_friendly_rentals_path
+            %li{class: nav_class(long_term_rentals_path)}
+              =link_to 'Long Term', long_term_rentals_path

@@ -8,15 +8,15 @@ describe MrRogersHelper do
     @helper.controller = MiniTest::Mock.new
   end
   
-  describe "nav_class" do
+  describe "admin_nav_class" do
     it "should return active" do
       @helper.controller.expect :controller_name, 'MrRogers::DashboardController'
-      assert_equal 'active', @helper.nav_class('dashboard')
+      assert_equal 'active', @helper.admin_nav_class('dashboard')
     end
 
     it "should return empty string" do
       @helper.controller.expect :controller_name, 'MrRogers::RentalsController'
-      assert_nil @helper.nav_class('dashboard')
+      assert_nil @helper.admin_nav_class('dashboard')
     end
   end
   

@@ -65,7 +65,7 @@ end
 # gem 'debugger'
 
 group :test do
-  gem 'resque_spec'
+#  gem 'resque_spec' # THIS BROKE MINITESTS BECAUSE IT INCLUDED RSPEC
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'minitest-rails'
@@ -78,4 +78,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'poltergeist'
+  gem 'turn'
 end

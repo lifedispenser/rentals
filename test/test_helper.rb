@@ -9,20 +9,9 @@ require "paperclip/matchers"
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
-
-Capybara.register_driver :chrome do |app|
-# The following doesn't work. it still creates the log file
-#  Capybara::Selenium::Driver.new(app, :browser => :chrome, args: %w[--ignore-certificate-errors --disable-popup-blocking --disable-translate --silent --disable-logging])
- Capybara::Selenium::Driver.new(app, :browser => :chrome)
-end
-
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, js_errors: false)
 end
-
-#Capybara.javascript_driver = :chrome
-#Capybara.javascript_driver = :webkit
-#Capybara.javascript_driver = :selenium
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -53,10 +42,6 @@ class ActiveSupport::TestCase
     click_on('Sign in')
     page.must_have_content "Admin Dashboard"
   end
-  
-  def helper
-    @helper ||= DummyClass.new
-  end
 end
 
 
@@ -64,14 +49,25 @@ class ActionController::TestCase
   include Devise::TestHelpers
 end
 
-
-class HelperTest < MiniTest::Spec
-  include ActiveSupport::Testing::SetupAndTeardown
-  include ActionView::TestCase::Behavior
-  register_spec_type(/Helper$/, self)
+class ActionView::TestCase
 end
 
+#class MiniTest::Unit::TestCase
+#  include Rails.application.routes.url_helpers
+#end
+
+#class HelperTest < MiniTest::Spec
+#  include Rails.application.routes.url_helpers
+#  include Capybara::DSL
+  
+#  include ActiveSupport::Testing::SetupAndTeardown
+#  include ActionView::TestCase::Behavior
+#  register_spec_type(/Helper$/, self)
+#  def helper
+#    @helper ||= DummyClass.new
+#  end
+#end
+
 class DummyClass < ActionView::Base
-  # include each of your Rails helpers here
-  include MrRogersHelper
+  include Rails.application.routes.url_helpers
 end

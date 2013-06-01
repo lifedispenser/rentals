@@ -1,5 +1,5 @@
 module MrRogersHelper
-  def nav_class(link)
+  def admin_nav_class(link)
     'active' if controller.controller_name.downcase.include?(link)
   end
   

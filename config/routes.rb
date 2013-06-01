@@ -58,6 +58,9 @@ Rentals::Application.routes.draw do
     resources :photos, except: [:edit]
   end
 
+  get 'rentals/pet_friendly' => 'rentals#index', pet_friendly: true, as: 'pet_friendly_rentals'
+  get 'rentals/kid_friendly' => 'rentals#index', kid_friendly: true, as: 'kid_friendly_rentals'
+  get 'rentals/long_term' => 'rentals#index', long_term: true, as: 'long_term_rentals'
   resources :rentals, only: [:show, :index]
   resources :contacts, only: [:create]
 end

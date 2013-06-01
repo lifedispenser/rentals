@@ -2,9 +2,9 @@
   .navbar-inner
     =link_to 'Admin Dashboard', mr_rogers_path, class: 'brand'
     %ul.nav
-      %li{class: nav_class('dashboard')}
+      %li{class: admin_nav_class('dashboard')}
         =link_to 'Home', mr_rogers_path
-      %li{class: nav_class('rentals')}
+      %li{class: admin_nav_class('rentals')}
         =link_to "Rentals", mr_rogers_rentals_path
       %li
         =link_to "Sign out", destroy_user_session_path, :method => :delete
